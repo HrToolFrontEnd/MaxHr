@@ -1,0 +1,145 @@
+@import "../--mixing.scss";
+@import "../--var.scss";
+@media (max-width: 576px) {
+  .CreateBenchmark_brn {
+    button {
+      width: 50%;
+    }
+  }
+  .SavedBenchmark_btn {
+    button {
+      width: 50%;
+    }
+  }
+  .select_team_leaders_CheckBox_div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .Select_Services_row_new {
+    border: 2px solid #e6dede;
+    padding: 20px 0px;
+    border-radius: 8px;
+    padding-top: 13px;
+    width: 98%;
+  }
+  .Select_Services_row_new_inner_top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .Select_Services_row_new_inner {
+    position: absolute;
+    top: -17px;
+    background: white;
+    width: 25px;
+    left: 20px;
+    color: #d6caca;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    p {
+      margin-bottom: 0;
+      font-size: 20px;
+      font-weight: 550;
+    }
+  }
+
+  .add_Department_btn_div {
+    margin-top: 3rem !important;
+  }
+  .Select_Services_row {
+    position: relative;
+
+    .manager_btn_outline {
+      padding: 10px 20px;
+      font-size: 15px;
+      width: 94%;
+      position: absolute;
+      left: 0;
+      margin-top: 10px;
+      margin-left: 12px;
+    }
+  }
+  .manager_btn_outline {
+    font-size: 11px;
+  }
+  .Client_Profile_title {
+    display: block;
+  }
+  .Client_Profile_main_top_div {
+    display: none;
+  }
+  .Client_Profile_svg {
+    svg {
+      margin-left: 25px;
+      top: 3px;
+    }
+    label {
+      display: none;
+    }
+  }
+  .Client_Profile_svg_last_text {
+    display: none;
+  }
+  .my_notes_top_main_div {
+    height: 37.8rem;
+  }
+  .MeetingsList_btn {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    .manager_btn_full {
+      position: absolute;
+      width: 92%;
+      bottom: 13px;
+    }
+  }
+  .MeetingsList_title_div {
+    text-align: center;
+  }
+  .MeetingsList_time p {
+    text-align: center;
+  }
+  .MeetingsList_row_div {
+    position: relative;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+  .ProjectList_link_div {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-top: 1.5rem;
+  }
+  .ProjectList_name_top_div {
+    justify-content: center;
+  }
+  .welcome_note_mobile {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .manager_btn_full {
+    font-size: 11px;
+  }
+  .welcome_note_div {
+    h3 {
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+  }
+}
+@media (min-width: 768px) {
+  .my_notes_top_main_div {
+    height: 9.3rem;
+  }
+}
+@media (min-width: 1024px) {
+  .my_notes_top_main_div {
+    height: 37.8rem;
+  }
+}
+@media (min-width: 1440px) {
+}

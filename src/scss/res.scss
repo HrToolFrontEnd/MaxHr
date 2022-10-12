@@ -1,0 +1,1348 @@
+@import "--var.scss";
+@import "--mixing.scss";
+@media (max-width: 320px) {
+  .Asset_main_div2 {
+    display: block;
+  }
+  .JobsType_card {
+    ul {
+      .JobsType_card_menu {
+        right: 39px;
+      }
+    }
+  }
+  .HolidaysSetting_main_div {
+    display: block;
+  }
+}
+@media (max-width: 576px) {
+  .Salary_Slip_Template_img_div {
+    width: 17rem;
+    height: 24rem;
+  }
+  .Salary_Slip_Template_img {
+    width: 17rem;
+    height: 24rem;
+  }
+  .approve_input {
+    margin-top: 3rem;
+  }
+  .approve_input_btn {
+    position: absolute;
+    top: 11px;
+    right: 13px;
+    margin: 0;
+  }
+  .approval_title_main_div {
+    display: block;
+    position: relative;
+    .setting_text {
+      margin-top: 25px;
+    }
+  }
+  .approval_title2 {
+    h3 {
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: 10px;
+      position: absolute;
+      top: 6px;
+      right: 13px;
+      font-size: 15px;
+    }
+  }
+  .approval_title {
+    h3 {
+      position: absolute;
+      top: 6px;
+      left: 13px;
+      font-size: 15px;
+    }
+  }
+  .hand_over_form_top_inner_div {
+    width: 100%;
+  }
+  .HandOverList_top_div {
+    display: block;
+  }
+  .return_asset_list_top_div {
+    display: block;
+  }
+  .status_top_div_inner {
+    width: 100%;
+  }
+  .status_top_div_inner_data {
+    padding-left: 1rem !important;
+  }
+  .Resignation_form_div {
+    width: 100%;
+  }
+  .upload_document_list_main_div {
+    display: block;
+  }
+  .UploadDocument_select {
+    .dashboard_top_week_Select {
+      width: 100%;
+    }
+  }
+  .projact_right_filter_btn_div {
+    .UploadDocumentModal_body_btn {
+      padding: 5px 40px;
+    }
+    .UploadDocumentModal_body_btn2 {
+      padding: 7px 30px;
+    }
+  }
+  .projact_right_filter_data {
+    height: 30rem;
+  }
+  .projact_right_filter_div {
+    .MuiPaper-root {
+      top: 6rem !important;
+      height: 84% !important;
+      right: 11px !important;
+      width: 95% !important;
+      border-radius: 10px !important;
+    }
+  }
+  .Projects_btn_div {
+    border: 1px solid black;
+    p {
+      display: none;
+    }
+  }
+  .notifications_btn {
+    padding: 7px 0;
+    margin: 0;
+    background-color: $c2;
+    padding-bottom: 10px;
+    a {
+      color: white;
+    }
+  }
+  .HolidayslistPage_main_div {
+    display: block;
+  }
+  .AddDepartment_inner_div {
+    width: 100%;
+  }
+  .add_asset_right_btn {
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  .AddAsset_top_inner_div {
+    width: 100%;
+  }
+  .asset_card_icon {
+    margin: auto;
+  }
+  .asset_card_text_div {
+    text-align: center;
+    padding-left: 0;
+  }
+  .Asset_main_div {
+    display: block;
+  }
+  .Contractor_Management_main_div {
+    display: block;
+  }
+  .document_verification_app_btn_div {
+    button {
+      margin-top: 10px;
+      width: 100%;
+    }
+  }
+  .Completed_Jobs_List_feedback_star {
+    justify-content: flex-start;
+    font-size: 12px;
+    span {
+      font-size: 12px !important;
+    }
+  }
+  .Schedule_Interview_chips {
+    .css-2m9kme-MuiFormControl-root {
+      width: 100%;
+    }
+  }
+  .ScheduleInterview_top_div {
+    width: 100%;
+  }
+  .Application_btn_div {
+    display: block;
+    button {
+      width: 100%;
+    }
+    .dropdown {
+      button {
+        width: 100%;
+        margin-top: 1rem;
+      }
+    }
+  }
+  .design_application_mobile {
+    margin-bottom: 1rem;
+    p {
+      font-weight: 600;
+    }
+  }
+  .design_application_text_div {
+    p {
+      text-align: justify;
+    }
+  }
+  .JobsList_copy_btn_div {
+    display: block;
+    button {
+      width: 100%;
+      margin-left: 0;
+      margin-top: 10px;
+    }
+  }
+  .datetime_local_top_div {
+    justify-content: start;
+    margin-bottom: 10px;
+  }
+  .EmployeesProfileCard_top_div {
+    position: relative;
+    .css-2m9kme-MuiFormControl-root {
+      width: 100% !important;
+    }
+  }
+  .ProgressBar_top_edit {
+    top: 5px;
+    right: 10px;
+  }
+  .datetime_local_butn_top_div {
+    display: flex;
+    width: auto;
+    height: auto;
+  }
+  .datetime_local_butn {
+    .button2 {
+      margin-bottom: 0;
+      margin-right: 5px;
+      width: 7rem;
+    }
+    .button1 {
+      margin-left: 5px;
+    }
+  }
+
+  .JobsList_img {
+    height: 3rem;
+    width: 3rem;
+  }
+  .interviews_round_tabs_div {
+    .nav-item {
+      width: 100% !important;
+    }
+    .nav {
+      flex-wrap: nowrap !important;
+    }
+  }
+  .new_application_tabs_div {
+    .nav-item {
+      width: 100%;
+    }
+  }
+  .new_application_item {
+    .new_application_tabs1 {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  }
+  .TotalOpenings_input_div {
+    input {
+      width: 100%;
+    }
+  }
+  .upcoming_interviews_ul {
+    li {
+      padding: 6px 15px;
+    }
+  }
+  .HiringIndexCard_more_card_div {
+    padding: 2.4rem;
+  }
+  .AppraisalSetting_inner_main_div {
+    width: 100%;
+  }
+  .ReimbursementSetup_main_div {
+    display: block;
+  }
+  .default_salary_stracture_main_div {
+    display: grid;
+  }
+  .dashboard_setup_top_main_div_inner {
+    width: 100%;
+  }
+  .dashboard_setup_select {
+    width: 100%;
+    margin-left: 0;
+  }
+  .dashboard_setup_title {
+    padding: 1rem 1rem;
+  }
+  .CompanySetup_tab {
+    .nav {
+      margin-bottom: 1.5rem;
+    }
+  }
+  .CompanySetup_checkbox_div {
+    .CompanySetup_checkbox_label {
+      font-size: 12px;
+    }
+  }
+  .CompanySetup_inner_main_div {
+    width: 100%;
+  }
+  .MissingInformation_main_div {
+    display: block;
+  }
+  .Reports_main_div {
+    display: block;
+  }
+  .Reports_card_inner_div {
+    p {
+      font-size: 14px;
+    }
+  }
+  .feedback_main_div {
+    padding-top: 1rem;
+  }
+  .Feedback_Ratings_btn_div {
+    text-align: center;
+  }
+  .Feedback_Ratings_div {
+    margin-bottom: 1.5rem;
+  }
+  .Feedback_Ratings_main_div {
+    display: block;
+  }
+  .feedback_icon_top_div {
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  .UserAppraisalDate_list_btn {
+    .nav-item {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  .Appraisal_stap_1_top_btn {
+    right: 0;
+  }
+  .Appraisal_stap_1_like_btn {
+    padding: 3rem 1rem;
+    p {
+      span {
+        svg {
+          font-size: 25px;
+        }
+      }
+    }
+  }
+  .Appraisal_progress_bar_custom_container {
+    margin: 0 0;
+    .IssueAssets_btn_bottom_div2 {
+      display: flex;
+    }
+  }
+  .MyPerformance_chart_div2 {
+    margin-top: 8px;
+  }
+  .GreenModal_card {
+    margin-bottom: 1rem !important;
+  }
+  .profil_emp_inter_page_title {
+    font-size: 14px;
+  }
+  .MyAttendence_dashbaord_calendar_iner_text_div {
+    display: block;
+  }
+  .MyAttendence_dashbaord_calendar {
+    height: 24rem !important;
+    .react-calendar__navigation {
+      margin-bottom: 0em !important;
+      button {
+        font-size: 15px !important;
+      }
+    }
+    .react-calendar__tile {
+      padding: 10px 6.6667px !important;
+    }
+    abbr[data-bs-original-title],
+    abbr[title] {
+      text-decoration: none !important;
+      font-size: 14px !important;
+    }
+    .react-calendar__navigation__label {
+      font-size: 15px !important;
+    }
+  }
+  .profile_input_div_finance {
+    display: block;
+  }
+  .IssueAssets_btn_bottom_div2 {
+    display: block;
+    button {
+      width: 100%;
+      margin: 0;
+      margin-bottom: 10px;
+    }
+  }
+  .SalaryStracture_top_tabel_top_div1 {
+    display: block;
+  }
+  .SalaryStracture_top_tabel_top_div {
+    display: block;
+  }
+  .IssueAssets_top_div {
+    display: block;
+  }
+  .Experience_timline_edit_img {
+    right: 8%;
+  }
+  .Experience_top_btn_div {
+    text-align: center;
+  }
+  .Experience_top_btn {
+    width: 100%;
+    margin: auto;
+    margin-bottom: 1rem;
+  }
+  .Experience_timline_title_iner {
+    h4 {
+      margin-top: 1rem;
+    }
+  }
+  .UploadDocumentModal_body_btn {
+    padding: 10px 40px;
+  }
+  .UploadDocumentModal_body_btn2 {
+    padding: 10px 40px;
+  }
+  .EmployeesTabPanDataImg {
+    height: 3.5rem;
+    width: 3.5rem;
+  }
+  .btnupload_bottom {
+    height: 48px;
+    width: 200px;
+  }
+  .btnupload {
+    height: 48px;
+    width: 200px;
+  }
+  .UploadDocument_img_div {
+    margin: 0;
+    margin-top: 2rem;
+  }
+  .UploadDocument_img_div_iner {
+    width: 100%;
+  }
+  .UploadDocument_select {
+    display: block;
+  }
+  .EmployeesDocument_list_top_div {
+    .nav-item {
+      width: auto !important;
+    }
+    .nav {
+      flex-wrap: wrap !important;
+    }
+  }
+  .AboutProfile_img_div_col {
+    text-align: center;
+  }
+  .AboutProfile_img_div {
+    border-radius: 100%;
+    width: auto;
+  }
+  .AboutProfile_img {
+    height: 13rem;
+    border-radius: 100%;
+    width: 13rem;
+  }
+  .profile_tab_div {
+    .profile_tab_div2 {
+      .nav {
+        display: flex;
+      }
+      .dashboard_top_week_Select {
+        margin-top: 1rem;
+      }
+    }
+    .nav-pills {
+      .nav-link {
+        width: auto;
+        margin: 2px;
+        border-radius: 6px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .EmployeesProfileCard_div_info {
+    border: none;
+    justify-content: unset;
+  }
+  .ProgressBar_top_div {
+    width: 100%;
+  }
+  .ProgressBar_top_main_div {
+    position: unset;
+  }
+  .EmployeesProfileCard_text_div {
+    margin-top: 0px;
+  }
+  .EmployeesProfileCard_icon_div_main {
+    width: 100%;
+  }
+  .EmployeesProfileCard_info_user {
+    p {
+      font-size: 12px;
+    }
+  }
+  .EmployeesProfileCard_info {
+    margin-top: 8px;
+    width: 100%;
+    p {
+      font-size: 12px;
+      margin-bottom: 4px;
+      span {
+        svg {
+          margin-right: 5px;
+          font-size: 15px;
+          margin-top: 0px;
+        }
+      }
+    }
+  }
+  .EmployeesProfileCard_text_div {
+    h3 {
+      font-size: 18px;
+    }
+    p {
+      font-size: 10px;
+    }
+  }
+  .EmployeesProfileCard_icon {
+    width: 3rem;
+    height: 3rem;
+  }
+  .profile_tab_div {
+    .nav-item {
+      width: auto;
+      text-align: center;
+    }
+  }
+  .profile_top_title_iner_div {
+    display: block;
+  }
+  .profile_top_title2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  .profile_input_div {
+    width: 100%;
+    margin: 0;
+    margin-top: 1rem;
+  }
+  .notification_top_new2 {
+    width: 100%;
+    height: 100%;
+    .notification_top_div {
+      background: white;
+    }
+  }
+  .PostUser_Comment_user_icon_img {
+    margin-top: 1px;
+  }
+  .EditPost_attachment_teat {
+    p {
+      font-size: 17px;
+    }
+  }
+  .EditPost_img_post {
+    margin-top: 0rem;
+  }
+  .EditPost_img {
+    width: 100%;
+    margin: auto;
+    margin-top: 1.5rem;
+  }
+  .UserPost_img {
+    height: 10rem;
+  }
+  .PostUser_sub_Comment_user {
+    margin-left: 0rem;
+    p {
+      font-size: 13px;
+      margin-top: 6px;
+      margin-right: 0rem;
+    }
+  }
+  .PostUser_text {
+    padding: 1rem 0rem 0rem 0rem;
+    p {
+      font-size: 18px;
+    }
+  }
+  .PostUser_user_icon {
+    height: 2rem;
+    width: 2rem;
+  }
+  .PostUser_user_icon_name {
+    h3 {
+      font-size: 13px;
+    }
+  }
+  .PostUser_user_icon_ul {
+    li {
+      margin-right: 10px;
+    }
+  }
+  .PostUser_user_icon_name_star_top_div {
+    position: absolute;
+    top: 3%;
+    right: 2%;
+  }
+  .WhoAwayAppPopup_top_div {
+    top: -10%;
+    left: 6%;
+  }
+  .WhoAwayAppCard_top_img_div {
+    margin-right: 1rem;
+    .celebrations_card_img {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  .UserDetailsList_icon_top_div {
+    span {
+      color: $blue;
+    }
+  }
+  .table_top_div {
+    display: block;
+  }
+  .ApprovalsCard_modal_icon_btn_div {
+    display: block;
+    top: 41%;
+    left: 40%;
+  }
+  .ApprovalsCard_modal_pic_overlay {
+    height: 100%;
+    width: 100%;
+    display: block;
+  }
+  .ApprovalsCard_modal_pic_bottom_title_div {
+    width: 100%;
+    display: none;
+  }
+  .ApprovalsCard_modal_pic {
+    width: 100%;
+    height: 20rem;
+  }
+  .TimesheetReview_main_div {
+    display: block;
+  }
+  .ApprovalDetailsPage_btn {
+    height: 50px;
+    width: 220px;
+    margin: 8px 0 !important;
+  }
+  .ApprovalDetailsPage_main_div {
+    display: block;
+  }
+  .ApprovalDetailsPage_search_input_iner_div {
+    span {
+      left: 2%;
+    }
+    input {
+      padding-left: 38px;
+    }
+  }
+  .ApprovalDetailsPage_date_picker {
+    input {
+      letter-spacing: normal;
+    }
+  }
+  .ApprovalDetailsPage_search_input {
+    display: block;
+    align-items: unset;
+    justify-content: unset;
+  }
+  .reimbursement_card_options {
+    p {
+      padding: 2px 18px 2px 10px;
+      font-size: 13px;
+      &:hover {
+        padding: 2px 18px 2px 10px;
+        font-size: 13px;
+      }
+    }
+  }
+  .working_time_info {
+    &:hover {
+      box-shadow: none;
+    }
+  }
+  .dashboard_top_week_Select2 {
+    .css-14el2xx-placeholder {
+      font-size: 12px;
+    }
+    .css-319lph-ValueContainer {
+      padding: 0;
+    }
+  }
+  .working_time_info {
+    p {
+      font-size: 13px;
+    }
+  }
+  .celebrations_card_user_info {
+    h5 {
+      font-size: 14px;
+    }
+  }
+  .reimbursement_top_title_link_page {
+    margin-top: -4px;
+  }
+  .working_time_info_main_div {
+    height: 89%;
+  }
+  .page_top_title {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    border-bottom: 1px solid;
+    padding-bottom: 10px;
+  }
+  .page_top_title {
+    h3 {
+      font-size: 16px;
+    }
+  }
+
+  .dashbaord_white_title {
+    p {
+      font-size: 13px;
+    }
+  }
+  .custom_container {
+    padding: 14px;
+  }
+  .celebrations_card_user_info {
+    text-align: center;
+  }
+  .profile_list_title {
+    font-size: 12px;
+  }
+  .user_profile_name {
+    font-size: 25px;
+  }
+  .dashboard_top_user_name {
+    text-align: center;
+    h3 {
+      margin-bottom: 1rem;
+      font-size: 20px;
+      span {
+        font-size: 13px;
+      }
+    }
+  }
+  .user_input {
+    margin-bottom: 1rem;
+  }
+  .profile_img_top_div {
+    padding: 0 25px;
+  }
+  .notification_time_div {
+    text-align: center;
+    p {
+      font-size: 11px;
+      color: black;
+    }
+  }
+  .notification_mess {
+    font-size: 13px;
+  }
+  .notification_top_div {
+    background-color: #dde2ff;
+  }
+  .HiredCandidates_tabel_main_div {
+    display: block;
+  }
+}
+@media (min-width: 768px) {
+  .HandOverList_top_div {
+    display: block;
+  }
+  .return_asset_list_top_div {
+    display: block;
+  }
+  .status_top_div_inner {
+    width: 70%;
+  }
+  .Experience_timline_img {
+    margin-bottom: 10px !important;
+    margin: unset;
+  }
+  .projact_right_filter_data {
+    height: 24rem;
+  }
+  .projact_right_filter_div {
+    .MuiPaper-root {
+      width: 60% !important;
+      height: 70% !important;
+    }
+  }
+  .AddDepartment_inner_div {
+    width: 70%;
+  }
+  .AddAsset_top_inner_div {
+    width: 100%;
+  }
+  .add_asset_right_btn {
+    font-size: 11px;
+    span {
+      svg {
+        font-size: 12px;
+      }
+    }
+  }
+  .Contractor_Management_main_div {
+    display: block;
+  }
+  .Completed_Jobs_List_feedback_star {
+    justify-content: flex-start;
+  }
+  .document_verification_app_btn_div {
+    button {
+      margin-top: 10px;
+      width: 100%;
+    }
+  }
+  .ScheduleInterview_top_div {
+    width: 100%;
+  }
+  .HiredCandidates_tabel_main_div {
+    display: block;
+  }
+  .Feedback_Ratings_div_hired {
+    span {
+      font-size: 9px !important;
+      margin-left: 2px;
+    }
+    h6 {
+      margin-left: 4px;
+      font-size: 8px;
+    }
+  }
+  .JobsList_img {
+    height: 2rem;
+    width: 2rem;
+  }
+  .new_application_item {
+    .new_application_tabs1 {
+      width: 21.4rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+  .TotalOpenings_input_div {
+    input {
+      width: 100%;
+    }
+  }
+  .HiringIndexCard_more_card_div {
+    padding: 2.4rem;
+  }
+  .AppraisalSetting_inner_main_div {
+    width: 70%;
+  }
+  .default_salary_stracture_main_div {
+    display: grid;
+  }
+  .CompanySetup_inner_main_div {
+    width: 100%;
+  }
+  .Reports_main_div {
+    display: block;
+  }
+  .Reports_card_inner_div {
+    p {
+      font-size: 16px;
+    }
+  }
+  .Appraisal_stap_1_top_btn {
+    right: -2rem;
+  }
+  .Appraisal_progress_bar_custom_container {
+    margin: 0 2rem;
+  }
+  .MyPerformance_chart_div2 {
+    margin-top: 8px;
+  }
+  .profile_input_div_finance {
+    display: block;
+  }
+  .profile_tab_div2 {
+    .nav-item {
+      margin: 2px;
+      margin-bottom: 2px;
+      width: 11.1rem;
+      text-align: center;
+    }
+    .nav-pills {
+      .nav-link {
+        border-radius: 6px !important;
+      }
+    }
+  }
+  .Experience_timline_edit_img {
+    right: 4%;
+  }
+  .EmployeesProfileCard_text_div {
+    margin-top: 10px;
+    h3 {
+      font-size: 18px;
+    }
+    p {
+      font-size: 10px;
+    }
+  }
+  .EmployeesProfileCard_icon {
+    width: 3rem;
+    height: 3rem;
+  }
+  .notification_top_new2 {
+    width: 63vw;
+    height: 37rem;
+  }
+  .EditPost_img {
+    width: 100%;
+    height: 13rem;
+    margin-top: 1.5rem;
+  }
+  .UserPost_img {
+    height: 27rem;
+  }
+  .whp_away_card_overflow_div {
+    height: 18rem;
+  }
+  .WhoAwayAppCard_top_img_div {
+    margin-right: 1rem;
+  }
+  .ApprovalsCard_modal_pic_overlay {
+    width: 14rem;
+  }
+  .ApprovalsCard_modal_pic {
+    width: 14rem;
+  }
+  .ApprovalsCard_modal_pic_bottom_title_div {
+    width: 14rem;
+  }
+  .ApprovalDetailsPage_main_div {
+    display: block;
+  }
+  .ApprovalDetailsPage_search_input_iner_div {
+    span {
+      left: 2%;
+    }
+    input {
+      padding-left: 38px;
+    }
+  }
+  .ApprovalDetailsPage_search_input {
+    display: block;
+    align-items: unset;
+    justify-content: unset;
+  }
+  .dashbaord_imfo_card_text {
+    h4 {
+      font-size: 15px;
+    }
+  }
+  .top_nav_iner_div_input {
+    margin: 0 2rem;
+  }
+  .menu_container {
+    height: 35rem;
+  }
+}
+@media (min-width: 1024px) {
+  .HandOverList_top_div {
+    display: inline-table;
+  }
+  .return_asset_list_top_div {
+    display: inline-table;
+  }
+  .status_top_div_inner {
+    width: 50%;
+  }
+  .projact_right_filter_data {
+    height: 37rem;
+  }
+  .projact_right_filter_div {
+    .MuiPaper-root {
+      width: 42% !important;
+      height: 75% !important;
+    }
+  }
+  .AddDepartment_inner_div {
+    width: 50%;
+  }
+  .RejectedDetails_time {
+    justify-content: flex-start !important;
+  }
+  .AddAsset_top_inner_div {
+    width: 90%;
+  }
+  .add_asset_right_btn {
+    font-size: 14px;
+    span {
+      svg {
+        font-size: 15px;
+      }
+    }
+  }
+  .Contractor_Management_main_div {
+    display: inline-table;
+  }
+  .Completed_Jobs_List_feedback_star {
+    justify-content: flex-end;
+  }
+  .document_verification_app_btn_div {
+    button {
+      margin-top: 0;
+    }
+  }
+  .ScheduleInterview_top_div {
+    width: 70%;
+  }
+  .HiredCandidates_tabel_main_div {
+    display: inline-table;
+  }
+  .Feedback_Ratings_div_hired {
+    span {
+      margin-left: 5px;
+      font-size: 12px !important;
+    }
+    h6 {
+      margin-left: 8px;
+      font-size: 14px;
+    }
+  }
+  .JobsList_img {
+    height: 3rem;
+    width: 3rem;
+  }
+  .new_application_item {
+    .new_application_tabs1 {
+      width: 98%;
+    }
+  }
+  .TotalOpenings_input_div {
+    input {
+      width: 90%;
+    }
+  }
+  .upcoming_interviews_ul {
+    li {
+      padding: 6px 15px;
+    }
+  }
+  .HiringIndexCard_more_card_div {
+    padding: 0;
+  }
+  .DashbordBg_icon1 {
+    width: 3rem;
+    height: 3rem;
+  }
+  .DashbordBg_icon_top_div_iner {
+    p {
+      font-size: 14px;
+    }
+  }
+  .AppraisalSetting_inner_main_div {
+    width: 50%;
+  }
+  .default_salary_stracture_main_div {
+    display: grid;
+  }
+  .CompanySetup_inner_main_div {
+    width: 80%;
+  }
+  .Reports_main_div {
+    display: inline-table;
+  }
+  .Reports_card_inner_div {
+    p {
+      font-size: 12px;
+    }
+  }
+  .Appraisal_stap_1_top_btn {
+    right: -10rem;
+  }
+  .Appraisal_progress_bar_custom_container {
+    margin: 0 10rem;
+  }
+  .MyPerformance_chart_div2 {
+    margin-top: 1.5rem;
+  }
+  .EmployeesAttendanceList_main_div {
+    display: block;
+  }
+  .profile_input_div_finance {
+    display: flex;
+  }
+  .profile_tab_div2 {
+    .nav-item {
+      margin: 2px;
+      margin-bottom: 2px;
+      width: 12rem;
+      text-align: center;
+    }
+    .nav-pills {
+      .nav-link {
+        border-radius: 6px !important;
+      }
+    }
+  }
+  .Experience_timline_edit_img {
+    right: 3%;
+  }
+  .EmployeesProfileCard_icon {
+    width: 4rem;
+    height: 4rem;
+  }
+  .EmployeesProfileCard_text_div {
+    margin-top: 8px;
+    h3 {
+      font-size: 26px;
+    }
+  }
+  .notification_top_new2 {
+    width: 46vw;
+    height: 51rem;
+  }
+  .EditPost_img {
+    height: 10rem;
+    width: 15rem;
+  }
+  .UserPost_img {
+    height: 33rem;
+  }
+  .whp_away_card_overflow_div {
+    overflow: scroll;
+    height: 12rem;
+  }
+  .WhoAwayAppCard_top_img_div {
+    margin-right: 5px;
+  }
+  .ApprovalsCard_modal_pic_overlay {
+    width: 15rem;
+  }
+  .ApprovalsCard_modal_pic_bottom_title_div {
+    width: 15rem;
+  }
+  .ApprovalsCard_modal_pic {
+    width: 15rem;
+  }
+  .ApprovalDetailsPage_main_div {
+    display: inline-table;
+  }
+  .ApprovalDetailsPage_search_input_iner_div {
+    span {
+      left: 5%;
+    }
+    input {
+      padding-left: 35px;
+    }
+  }
+  .ApprovalDetailsPage_search_input {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+  .reimbursement_top_title_link_page {
+    margin-top: -3px;
+  }
+  .working_time_info {
+    p {
+      font-size: 15px;
+    }
+  }
+
+  .dashbaord_white_title {
+    p {
+      font-size: 14px;
+    }
+  }
+  .celebrations_card_user_info {
+    p {
+      font-size: 11px;
+    }
+  }
+  .dashbaord_imfo_card_text {
+    h4 {
+      font-size: 11px;
+    }
+  }
+  .top_nav_iner_div_input {
+    margin: 0 3rem;
+  }
+  .menu_container {
+    height: 40rem;
+  }
+}
+@media (min-width: 1440px) {
+  .status_top_div_inner {
+    width: 40%;
+  }
+  .projact_right_filter_data {
+    height: 30rem;
+  }
+  .RejectedDetails_time {
+    text-align: center;
+  }
+  .AddAsset_top_inner_div {
+    width: 80%;
+  }
+  .Feedback_Ratings_div_hired {
+    span {
+      margin-left: 8px;
+    }
+  }
+  .HiredCandidates_tabel_main_div {
+    display: inline-table;
+  }
+  .new_application_item {
+    .new_application_tabs1 {
+      width: 17rem;
+    }
+  }
+  .upcoming_interviews_ul {
+    li {
+      padding: 6px 25px;
+    }
+  }
+  .HiringIndexCard_more_card_div {
+    padding: 0;
+  }
+  .DashbordBg_icon_top_div_iner {
+    p {
+      font-size: 16px;
+    }
+  }
+  .DashbordBg_icon1 {
+    width: 4rem;
+    height: 4rem;
+  }
+  .default_salary_stracture_main_div {
+    display: block;
+  }
+  .CompanySetup_inner_main_div {
+    width: 60%;
+  }
+  .Reports_card_inner_div {
+    p {
+      font-size: 16px;
+    }
+  }
+  .EmployeesAttendanceList_main_div {
+    display: block;
+  }
+  .profile_tab_div2 {
+    .nav-item {
+      margin-bottom: unset;
+      text-align: center;
+    }
+    .nav-pills {
+      .nav-link {
+        border-radius: 6px !important;
+      }
+    }
+  }
+  .notification_top_new2 {
+    width: 41vw;
+    height: 43rem;
+  }
+  .whp_away_card_overflow_div {
+    overflow: scroll;
+    height: 15.4rem;
+  }
+  .WhoAwayAppCard_top_img_div {
+    margin-right: 2rem;
+  }
+  .reimbursement_top_title_link_page {
+    margin-top: 3px;
+  }
+  .working_time_info {
+    p {
+      font-size: 16px;
+    }
+  }
+
+  .dashbaord_white_title {
+    p {
+      font-size: 16px;
+    }
+  }
+  .celebrations_card_user_info {
+    p {
+      font-size: 12px;
+    }
+  }
+  .dashbaord_imfo_card_text {
+    h4 {
+      font-size: 14px;
+    }
+  }
+  .top_nav_iner_div_input {
+    margin: 0 8rem;
+  }
+}
+@media (min-width: 1558px) {
+  .projact_right_filter_data {
+    height: 43rem;
+  }
+  .EmployeesAttendanceList_main_div {
+    display: inline-table;
+  }
+}
+@media (min-width: 1700px) {
+  .projact_right_filter_data {
+    height: 53rem;
+  }
+  .top_nav_iner_div_input {
+    margin: 0 8rem;
+    span {
+      left: 1rem;
+    }
+  }
+}
+@media (min-width: 1900px) {
+  .projact_right_filter_data {
+    height: 56rem;
+  }
+  .UserPost_img {
+    height: 45rem;
+  }
+}
+@media (min-width: 2000px) {
+  .projact_right_filter_data {
+    height: 60rem;
+  }
+  .HrRegister_main_div {
+    display: block;
+  }
+}
+@media (min-width: 2100px) {
+  .HrRegister_main_div {
+    display: inline-table;
+  }
+}

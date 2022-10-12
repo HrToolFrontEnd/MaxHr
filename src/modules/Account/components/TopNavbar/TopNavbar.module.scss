@@ -1,0 +1,54 @@
+@import "../../../../scss/--mixing.scss";
+@import "../../../../scss/--var.scss";
+.icon_container {
+  position: relative;
+  color: white;
+  display: flex;
+  cursor: pointer;
+  transition: background 200ms ease;
+}
+.container {
+  display: flex;
+  align-items: center;
+  padding: var(--padding-sm);
+  position: sticky;
+  top: 0;
+  background: $c2;
+  z-index: 10;
+  svg {
+    font-size: 25px;
+    color: white;
+  }
+}
+
+.burger_container {
+  // display: none;
+  cursor: pointer;
+  padding: 0.2rem;
+  color: white;
+
+  @media screen and (max-width: 1024px) {
+    display: flex;
+  }
+
+  svg {
+    font-size: 1.8rem;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  align-items: center;
+
+  @media screen and (max-width: 360px) {
+    justify-content: flex-start;
+    margin-left: 3rem;
+  }
+}
+@media (max-width: 576px) {
+  .actions {
+    width: 100%;
+  }
+}

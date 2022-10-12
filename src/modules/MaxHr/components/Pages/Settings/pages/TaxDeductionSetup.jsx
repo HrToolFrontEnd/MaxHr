@@ -1,0 +1,85 @@
+import TopPageTitle from "../../../../../common/components/topPageTitle/Index";
+import { BsArrowLeft } from "react-icons/bs";
+export const TaxDeductionSetup = () => {
+  return (
+    <>
+      <div className="custom_container">
+        <TopPageTitle
+          TitleLink={-1}
+          TilelIcon={<BsArrowLeft />}
+          Name="Settings"
+        />
+        <div className="dashboard_setup_top_main_div">
+          <div className="dashboard_setup_top_main_div_inner">
+            <div>
+              <div>
+                <div className="row g-xxl-4 g-xl-4 g-lg-4 g-md-4 g-sm-3 g-3">
+                  <div className="col-12">
+                    <label className="all_page_my_label">
+                      Tax Deductions Setup
+                    </label>
+                    <div className="setting_text">
+                      Maxlence HR can automatically use any tax deductions
+                      updates that your employees put in, or ask for your
+                      approval before they are used to calculate payroll.
+                    </div>
+                  </div>
+                  <div className="col-12">
+                    <div className="automation_checkbox_div">
+                      <div className="form-check">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          id="2"
+                          defaultChecked="false"
+                        />
+                        <label
+                          className="form-check-label automation_checkbox_label"
+                          htmlFor="2"
+                        >
+                          Require admin approval for deductions updates
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-12">
+                    <div className="setting_text">
+                      Please select if you would like Maxlence HR to verify your
+                      employee's tax declarations. This is a one-time process
+                      usually carried out in January.
+                    </div>
+                  </div>
+                  <div className="col-12">
+                    <div className="automation_checkbox_div">
+                      <div className="form-check">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          id="3"
+                          defaultChecked="false"
+                        />
+                        <label
+                          className="form-check-label automation_checkbox_label"
+                          htmlFor="3"
+                        >
+                          Let Maxlence HR verify tax deductions
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-12  mb-4 company_setup_bottom_btn">
+                    <div className=" text-capitalize text-center">
+                      <button className=" ApprovalDetailsPage_btn">
+                        Save Changes
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};

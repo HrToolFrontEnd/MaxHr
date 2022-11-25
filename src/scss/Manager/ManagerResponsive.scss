@@ -1,6 +1,23 @@
 @import "../--mixing.scss";
 @import "../--var.scss";
 @media (max-width: 576px) {
+  .project_list_progress {
+    width: 13rem;
+    margin-top: 7px;
+    .progress {
+      width: 10rem;
+    }
+    span {
+      position: absolute;
+      top: -10px;
+      right: 50px;
+    }
+  }
+  .project_tabel {
+    overflow-x: auto;
+    white-space: nowrap;
+    display: block;
+  }
   .CreateBenchmark_brn {
     button {
       width: 50%;
@@ -84,38 +101,7 @@
   .Client_Profile_svg_last_text {
     display: none;
   }
-  .my_notes_top_main_div {
-    height: 37.8rem;
-  }
-  .MeetingsList_btn {
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 1rem;
-    .manager_btn_full {
-      position: absolute;
-      width: 92%;
-      bottom: 13px;
-    }
-  }
-  .MeetingsList_title_div {
-    text-align: center;
-  }
-  .MeetingsList_time p {
-    text-align: center;
-  }
-  .MeetingsList_row_div {
-    position: relative;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  }
-  .ProjectList_link_div {
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    margin-top: 1.5rem;
-  }
-  .ProjectList_name_top_div {
-    justify-content: center;
-  }
+
   .welcome_note_mobile {
     position: absolute;
     right: 0;
@@ -132,14 +118,17 @@
   }
 }
 @media (min-width: 768px) {
-  .my_notes_top_main_div {
-    height: 9.3rem;
+  .project_list_progress {
+    width: 13rem;
   }
 }
 @media (min-width: 1024px) {
-  .my_notes_top_main_div {
-    height: 37.8rem;
+  .project_list_progress {
+    width: 10rem;
   }
 }
 @media (min-width: 1440px) {
+  .project_list_progress {
+    width: 13rem;
+  }
 }

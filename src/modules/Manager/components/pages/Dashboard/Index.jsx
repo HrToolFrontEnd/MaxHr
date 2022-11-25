@@ -11,6 +11,7 @@ import { PageInnerTitle } from "../../../../common/ManagerComponents/pageInnerTi
 import { useState } from "react";
 import Calendar from "react-calendar";
 import { useNavigate } from "react-router-dom";
+import { OutlineBtn } from "../../../../common/ManagerComponents/Btn/Btn";
 export const Index = () => {
   return (
     <>
@@ -26,10 +27,16 @@ export const Index = () => {
         </div>
         <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
           <div className="row g-xxl-4 g-xl-4 g-lg-4 g-md-4 g-sm-3 g-3">
-            <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+            <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               <CalendarApp />
             </div>
           </div>
+        </div>
+        <div className="col-xxl-6 xol-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+          <TodayMeetings />
+        </div>
+        <div className="col-xxl-6 xol-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+          <PendingTasks />
         </div>
       </div>
     </>
@@ -121,39 +128,34 @@ const ProjectList = () => {
       PrioritybackgroundColor: "#FF3E48",
       PriorityName: "high",
       ProgressBar: "80",
-      text: "New Projects",
     },
     {
       link: "/",
-      ProjectName: "Luno Electrical Website design",
+      ProjectName: "Aftercare Website Design & Marketing",
       PrioritybackgroundColor: "#31C971",
       PriorityName: "low",
       ProgressBar: "50",
-      text: "New Projects",
     },
     {
       link: "/",
-      ProjectName: "Luno Electrical Website design",
+      ProjectName: "Maxlence Website Development",
       PrioritybackgroundColor: "#FF3E48",
       PriorityName: "high",
       ProgressBar: "30",
-      text: "New Projects",
     },
     {
       link: "/",
-      ProjectName: "Luno Electrical Website design",
+      ProjectName: "FSL E-Commerce Website Design",
       PrioritybackgroundColor: "#F3D32C",
       PriorityName: "Medium",
       ProgressBar: "70",
-      text: "New Projects",
     },
     {
       link: "/",
-      ProjectName: "Luno Electrical Website design",
+      ProjectName: "FSL Marketing - Google Ads",
       PrioritybackgroundColor: "#FF3E48",
       PriorityName: "high",
       ProgressBar: "90",
-      text: "New Projects",
     },
   ];
   const ProjectListApp = (props) => {
@@ -181,7 +183,10 @@ const ProjectList = () => {
                   <div
                     className="progress-bar"
                     role="progressbar"
-                    style={{ width: props.ProgressBar + "%" }}
+                    style={{
+                      width: props.ProgressBar + "%",
+                      backgroundColor: props.PrioritybackgroundColor,
+                    }}
                     aria-valuenow="0"
                     aria-valuemin="0"
                     aria-valuemax="100"
@@ -216,6 +221,169 @@ const ProjectList = () => {
                 <th scope="col">Project Name</th>
                 <th scope="col">Priority</th>
                 <th scope="col">Progress</th>
+              </tr>
+            </thead>
+            <tbody className="project_list_name_tr">
+              {ProjectListData.map((val, i) => {
+                return <ProjectListApp key={i} {...val} />;
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </>
+  );
+};
+const TodayMeetings = () => {
+  const ProjectListData = [
+    {
+      link: "/",
+      ProjectName: "Merchant Discounts & Offers",
+      titme: "11:00 (IST)",
+    },
+    {
+      link: "/",
+      ProjectName: "Discussion on Website Design Hompage",
+      titme: "20:00 (AEST)",
+    },
+    {
+      link: "/",
+      ProjectName: "Campaign Setup for Google Ads & Facebook Ads",
+      titme: "16:00 (IST)",
+    },
+    {
+      link: "/",
+      ProjectName: "Merchant Discounts & Offers",
+      titme: "16:00 (IST)",
+    },
+    {
+      link: "/",
+      ProjectName: "Merchant Discounts & Offers",
+      titme: "16:00 (IST)",
+    },
+  ];
+  const ProjectListApp = (props) => {
+    return (
+      <>
+        <tr>
+          <td className="project_list_name">{props.ProjectName}</td>
+          <td className="project_list_name">{props.titme}</td>
+          <td>
+            <div className="today_meetings_btn_div">
+              <OutlineBtn link={props.link} name="Join" />
+            </div>
+          </td>
+        </tr>
+      </>
+    );
+  };
+
+  return (
+    <>
+      <div className="dashbaord_white_card dashbaord_white_card2">
+        <div className="row">
+          <div className="col-6">
+            <PageInnerTitle name="Today’s Meetings" />
+          </div>
+          <div className="col-6 project_List_view_all_link">
+            <NavLink to="/">View All</NavLink>
+          </div>
+        </div>
+        <div>
+          <table className="table project_tabel table-borderless text-capitalize">
+            <thead>
+              <tr className="project_list_title">
+                <th scope="col">Title</th>
+                <th scope="col">Time</th>
+              </tr>
+            </thead>
+            <tbody className="project_list_name_tr">
+              {ProjectListData.map((val, i) => {
+                return <ProjectListApp key={i} {...val} />;
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </>
+  );
+};
+const PendingTasks = () => {
+  const ProjectListData = [
+    {
+      link: "/",
+      ProjectName: "Luno Webiste Review With Design Team",
+      PrioritybackgroundColor: "#FF3E48",
+      PriorityName: "high",
+      Projecttext: "Luno Electrical",
+    },
+    {
+      link: "/",
+      ProjectName: "Budget Allocation for Aftercare",
+      PrioritybackgroundColor: "#31C971",
+      PriorityName: "low",
+      Projecttext: "Luno Electrical",
+    },
+    {
+      link: "/",
+      ProjectName: "Budget Allocation for Aftercare",
+      PrioritybackgroundColor: "#FF3E48",
+      PriorityName: "high",
+      Projecttext: "Luno Electrical",
+    },
+    {
+      link: "/",
+      ProjectName: "Budget Allocation for Aftercare",
+      PrioritybackgroundColor: "#F3D32C",
+      PriorityName: "Medium",
+      Projecttext: "Luno Electrical",
+    },
+  ];
+  const ProjectListApp = (props) => {
+    return (
+      <>
+        <tr>
+          <td className="project_list_name">
+            {props.ProjectName}
+            <p>{props.Projecttext}</p>
+          </td>
+          <td>
+            <div
+              className="project_list_priority_div"
+              style={{ backgroundColor: props.PrioritybackgroundColor }}
+            >
+              <span className="project_list_priority">
+                {props.PriorityName}
+              </span>
+            </div>
+          </td>
+          <td>
+            <div className="">
+              <NavLink to={props.link}>View</NavLink>
+            </div>
+          </td>
+        </tr>
+      </>
+    );
+  };
+
+  return (
+    <>
+      <div className="dashbaord_white_card dashbaord_white_card2">
+        <div className="row">
+          <div className="col-6">
+            <PageInnerTitle name="Pending Tasks" />
+          </div>
+          <div className="col-6 project_List_view_all_link">
+            <NavLink to="/">View All</NavLink>
+          </div>
+        </div>
+        <div>
+          <table className="table project_tabel table-borderless text-capitalize">
+            <thead>
+              <tr className="project_list_title">
+                <th scope="col">Task Name</th>
+                <th scope="col">Priority</th>
               </tr>
             </thead>
             <tbody className="project_list_name_tr">

@@ -314,6 +314,12 @@
   font-weight: 500;
   font-size: 14px;
   color: #626262;
+  p {
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 12px;
+    color: #a5a5a5;
+  }
 }
 .project_list_priority {
   font-weight: 500;
@@ -373,6 +379,12 @@
   thead,
   tr {
     padding-bottom: 15px !important;
+  }
+}
+.today_meetings_btn_div {
+  margin-top: -6px;
+  .manager_btn_outline {
+    padding: 3px 4px;
   }
 }
 

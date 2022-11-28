@@ -2,21 +2,25 @@ import PageTop from "../../../../../common/components/topPageTitle/Index";
 import { BsArrowLeft } from "react-icons/bs";
 import { useState } from "react";
 import Select from "react-select";
-import { GoPrimitiveDot } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 import {
   InputBox,
   SelectBox,
   TextareaBox,
-  CheckBox,
 } from "../../../../../common/ManagerComponents/form/Form";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { Editor } from "react-draft-wysiwyg";
-import { UploadDocumentIner } from "../../../../../MaxHr/components/Pages/Profile/components/EmployeesDocument";
-import { Nav, Tab } from "react-bootstrap";
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineCheckCircle } from "react-icons/ai";
 import { OutlineBtnWithIcon } from "../../../../../common/ManagerComponents/Btn/Btn";
 import { BsPlus } from "react-icons/bs";
+import { FiCircle } from "react-icons/fi";
+import React, { Component } from "react";
+import { MdOutlineEdit } from "react-icons/md";
+import { BsUpload } from "react-icons/bs";
+// mui
+import Avatar from "@mui/material/Avatar";
+import Stack from "@mui/material/Stack";
+import { CgAttachment } from "react-icons/cg";
 export const ClientProfile = () => {
   return (
     <>
@@ -38,9 +42,9 @@ export const ClientProfileStep = () => {
   const steps = [<Step1 />, <Step2 />, <Step3 />, <Step4 />];
   const [currentStep, setCurrentStep] = useState(0);
   const getCurrentStepCheckbox = (index) => {
-    if (currentStep === index) return <GoPrimitiveDot />;
-    else if (currentStep > index) return <GoPrimitiveDot />;
-    else return <GoPrimitiveDot className="ClientProfile_normal_dot" />;
+    if (currentStep === index) return <AiOutlineCheckCircle />;
+    else if (currentStep > index) return <FiCircle />;
+    else return <FiCircle className="ClientProfile_normal_dot" />;
   };
   return (
     <>
@@ -48,7 +52,18 @@ export const ClientProfileStep = () => {
         <div className="row"></div>
         <div className="Appraisal_progress_bar_custom_container">
           <div className=" Client_Profile_main_top_div ">
-            <div className="Appraisal_progress_text_bar">
+            <div className="Client_Profile_main_top_div_inner">
+              <progress
+                className="Appraisal_progress_bar Appraisal_progress_bar_man"
+                value={(100 / steps.length) * (currentStep + 1)}
+                max="100"
+                variant="warning"
+              >
+                32%
+              </progress>
+            </div>
+
+            <div className="Appraisal_progress_text_bar Appraisal_progress_text_bar_mann">
               <ul className="mb-0 Client_Profile_svg">
                 <li>
                   <span>{getCurrentStepCheckbox(0)}</span>
@@ -56,29 +71,20 @@ export const ClientProfileStep = () => {
                 </li>
                 <li>
                   <span>{getCurrentStepCheckbox(1)}</span>
-                  <label>Project Profile</label>
+                  <label>Project Details</label>
                 </li>
                 <li>
                   <span>{getCurrentStepCheckbox(2)}</span>
-                  <label> Select Services</label>
+                  <label>Services</label>
                 </li>
                 <li>
                   <span className="Client_Profile_svg_last">
                     {getCurrentStepCheckbox(3)}
                   </span>
-                  <p className="Client_Profile_svg_last_text">
-                    Select Team Leaders
-                  </p>
+                  <p className="Client_Profile_svg_last_text">Project Leads</p>
                 </li>
               </ul>
             </div>
-            <progress
-              className="Appraisal_progress_bar"
-              value={(100 / steps.length) * (currentStep + 1)}
-              max="100"
-            >
-              32%
-            </progress>
           </div>
           <div>{steps[currentStep]}</div>
           <div>
@@ -124,11 +130,7 @@ const Step1 = () => {
       option: "+1",
     },
   ];
-  const options = [
-    { value: "In House", label: "In House" },
-    { value: "Project from Website", label: "Project from Website" },
-    { value: "Project from BD Team", label: "Project from BD Team" },
-  ];
+
   const Country = [
     { value: "Australia", label: "Australia" },
     { value: "Austria", label: "Austria" },
@@ -142,20 +144,20 @@ const Step1 = () => {
       <div className="Client_Profile_title">
         <h3>Client Profile</h3>
       </div>
-      <div className="m_t">
+      <div>
         <div className="row g-xxl-4 g-xl-4 g-lg-4 g-md-4 g-sm-3 g-3 ">
           <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
             <InputBox
               type="text"
               placeholder="Enter full name of client"
-              label="Client Name*"
+              label="Client Name* (POC/Owner)"
             />
           </div>
           <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
             <InputBox
               type="text"
               placeholder="Client’s Organization Name if any available"
-              label="Orginazation Name"
+              label="Organisation Name*"
             />
           </div>
           <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
@@ -174,29 +176,13 @@ const Step1 = () => {
           </div>
 
           <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-            <label className="all_page_my_label_new">Lead Source*</label>
-            <div className="dashboard_top_week_Select drop_box">
-              <Select
-                // menuIsOpen={true}
-                options={options}
-                placeholder="Select Lead Source"
-              />
-            </div>
-          </div>
-          <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
             <InputBox
               type="text"
               label="Email Address*"
               placeholder="Client’s personal email ID"
             />
           </div>
-          <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-            <InputBox
-              type="text"
-              label="Lead Source details"
-              placeholder="Lead Source details"
-            />
-          </div>
+
           <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
             <TextareaBox
               label="Address Line 1"
@@ -243,21 +229,22 @@ const Step1 = () => {
     </>
   );
 };
+
 const Step2 = () => {
+  let UserImg = "https://picsum.photos/id/64/200/300";
   const navigate = useNavigate();
   const ProjectIndustry = [
-    { value: "In House", label: "In House" },
-    { value: "Project from Website", label: "Project from Website" },
-  ];
-  const DecidePriority = [
     { value: "High", label: "High" },
-    { value: "Medium", label: "Medium" },
     { value: "Low", label: "Low" },
+  ];
+  const Frequency = [
+    { value: "Monthly", label: "Monthly" },
+    { value: "3 Monthly", label: "3 Monthly" },
+    { value: "Yearly", label: "Yearly" },
+    { value: "Fixed", label: "Fixed" },
   ];
   const Benchmark = [
-    { value: "High", label: "High" },
-    { value: "Medium", label: "Medium" },
-    { value: "Low", label: "Low" },
+    { value: "Standard", label: "Standard" },
     {
       value: "Set new Benchmark",
       label: "Set new Benchmark",
@@ -282,71 +269,113 @@ const Step2 = () => {
       placeholder="Congratulations, You are qualified for your next round of interview. We are inviting you..Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker Congratulations, You are qualified for your next round of interview. We are inviting you..Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker "
     />
   );
-  const EmployeesDocument = () => {
-    const EmployeesDocumentTopNameApp = (props) => {
+
+  const options = [
+    { value: "In House", label: "In House" },
+    { value: "Project from Website", label: "Project from Website" },
+    { value: "Project from BD Team", label: "Project from BD Team" },
+  ];
+  class UserLogoUploadButton extends Component {
+    handleFileUpload = (event) => {
+      console.log(event.target.files[0].name);
+    };
+
+    render() {
       return (
         <>
-          <Nav.Item>
-            <Nav.Link className="Employees_Document_name">
-              {props.Name}
-              <span>
-                <AiOutlineClose />
-              </span>
-            </Nav.Link>
-          </Nav.Item>
+          <input
+            ref="fileInput"
+            onChange={this.handleFileUpload}
+            type="file"
+            style={{ display: "none" }}
+            // multiple={false}
+          />
+          <div className=" user_logo_upload_main_div">
+            <button onClick={() => this.refs.fileInput.click()}>
+              <MdOutlineEdit />
+            </button>
+            <Stack direction="row" spacing={2}>
+              <Avatar
+                alt="Remy Sharp"
+                src={UserImg}
+                className="user_logo_upload_img"
+              />
+            </Stack>
+          </div>
         </>
       );
+    }
+  }
+  class UploadDocument extends Component {
+    handleFileUpload = (event) => {
+      console.log(event.target.files[0].name);
     };
-    const EmployeesDocumentTopNameData = [
-      {
-        Name: "Offer Letter",
-      },
-      {
-        Name: "Attached Documets",
-      },
-    ];
 
-    return (
-      <>
-        <div className="EmployeesDocument_list_top_div m-0">
-          <Tab.Container id="left-tabs-example" defaultActiveKey="1">
-            <Nav variant="pills" className="flex">
-              {EmployeesDocumentTopNameData.map((val, i) => {
-                return <EmployeesDocumentTopNameApp key={i} Name={val.Name} />;
-              })}
-            </Nav>
-          </Tab.Container>
-        </div>
-      </>
-    );
-  };
+    render() {
+      return (
+        <>
+          <input
+            ref="fileInput"
+            onChange={this.handleFileUpload}
+            type="file"
+            style={{ display: "none" }}
+            // multiple={false}
+          />
+          <div>
+            <button
+              className="manager_btn_full upload_document_btn"
+              onClick={() => this.refs.fileInput.click()}
+            >
+              Upload document
+              <span>
+                <BsUpload />
+              </span>
+            </button>
+          </div>
+        </>
+      );
+    }
+  }
   return (
     <>
       <div className="Client_Profile_title">
-        <h3>Project Profile</h3>
+        <h3>Project Details</h3>
       </div>
-      <div className="m_t">
+      <div>
         <div className="row g-xxl-4 g-xl-4 g-lg-4 g-md-4 g-sm-3 g-3 ">
-          <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-            <label className="all_page_my_label_new">Project Industry*</label>
-            <div className="dashboard_top_week_Select drop_box">
-              <Select
-                options={ProjectIndustry}
-                placeholder="Project Industry"
-              />
+          <div className="row g-xxl-4 g-xl-4 g-lg-4 g-md-4 g-sm-3 g-3">
+            <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 order-md-1 order-2">
+              <div className="row g-xxl-4 g-xl-4 g-lg-4 g-md-4 g-sm-3 g-3">
+                <div className="col-12">
+                  <InputBox
+                    type="text"
+                    label="Project  Name*"
+                    placeholder=" Project Name"
+                  />
+                </div>
+                <div className="col-12">
+                  <label className="all_page_my_label_new">Lead Source*</label>
+                  <div className="dashboard_top_week_Select drop_box">
+                    <Select
+                      // menuIsOpen={true}
+                      options={options}
+                      placeholder="Select Lead Source"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 order-md-2 order-1 user_logo_inner_div">
+              <div>
+                <UserLogoUploadButton />
+              </div>
             </div>
           </div>
+
           <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-            <InputBox
-              type="text"
-              label="Project  Name*"
-              placeholder=" Name of the idea on which you want to work with us"
-            />
-          </div>
-          <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-            <label className="all_page_my_label_new">Decide Priority</label>
+            <label className="all_page_my_label_new">Priority*</label>
             <div className="dashboard_top_week_Select drop_box">
-              <Select options={DecidePriority} placeholder="Select One" />
+              <Select options={ProjectIndustry} placeholder="Priority" />
             </div>
           </div>
           <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
@@ -362,59 +391,70 @@ const Step2 = () => {
             </div>
           </div>
           <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-            <InputBox type="date" label="On Boarding date" placeholder="" />
+            <InputBox type="date" label="Onboarding Date*" placeholder="" />
           </div>
           <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-            <div className="row">
-              <div className="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-5 col-5">
+            <div className="row g-xxl-4 g-xl-4 g-lg-4 g-md-4 g-sm-3 g-3">
+              <div className="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-12 col-12">
                 <SelectBox
                   label="Select Currency*"
                   SelectBoxData={CountryData}
                 />
               </div>
-              <div className="col-xxl-8 col-xl-8 col-lg-7 col-md-6 col-sm-7 col-7">
-                <InputBox type="number" placeholder="INR" label="Budget*" />
+              <div className="col-xxl-8 col-xl-8 col-lg-7 col-md-6 col-sm-12 col-12">
+                <InputBox
+                  type="number"
+                  placeholder="Service Charge*"
+                  label="Service Charge*"
+                />
               </div>
             </div>
           </div>
           <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-            <InputBox type="date" label="Project Srart date" placeholder="" />
+            <InputBox type="date" label="Project Start Date*" placeholder="" />
           </div>
           <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-            <InputBox type="date" label="Project Deadline*" placeholder="" />
+            <label className="all_page_my_label_new">Frequency</label>
+            <div className="dashboard_top_week_Select drop_box">
+              <Select options={Frequency} placeholder="Frequency" />
+            </div>
+          </div>
+
+          <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <InputBox type="date" label="Project Due Date*" placeholder="" />
+          </div>
+          <div className=" d-flex  col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <ul className="client_profile_uplod_btn_ul">
+              <li>
+                <p>
+                  <span>
+                    <CgAttachment />
+                  </span>
+                  Attachments :
+                </p>
+              </li>
+              <li>
+                <UploadDocument />
+              </li>
+            </ul>
           </div>
           <div className="col-12">
-            <label className="all_page_my_label_new">Add Project Brief</label>
+            <label className="breff_label_add_project">Brief</label>
             <div className="Hire_editer">
               <EditorCustomToolbarOption />
             </div>
           </div>
           <div className="col-12">
-            <label className="all_page_my_label_new">
-              Add Objective of this project
-            </label>
+            <label className="breff_label_add_project">Objectives</label>
             <div className="Hire_editer">
               <EditorCustomToolbarOption />
             </div>
           </div>
           <div className="col-12">
-            <label className="all_page_my_label_new">
-              Add Scope of this project
-            </label>
+            <label className="breff_label_add_project">Scope</label>
             <div className="Hire_editer">
               <EditorCustomToolbarOption />
             </div>
-          </div>
-          <div className="col-12">
-            <label className="all_page_my_label_new">
-              only .pdf and not more than 2mb in size
-            </label>
-            <div className="DocumentCompanySetup_upload">
-              <UploadDocumentIner />
-            </div>
-          </div>
-          <div className="col-12">
-            <EmployeesDocument />
           </div>
         </div>
       </div>
@@ -428,17 +468,34 @@ const Step3 = () => {
     { value: "Marketing", label: "Marketing" },
     { value: "Others", label: "Others" },
   ];
+  const SelectSubDepartment = [
+    { value: "Website Design", label: "Website Design" },
+    { value: "Application Design", label: "Application Design" },
+    { value: "Facebook Post Design", label: "Facebook Post Design" },
+    { value: "Flyer Design", label: "Flyer Design" },
+  ];
   const Service = [
     { value: "Website Design", label: "Website Design" },
     { value: "Application Design", label: "Application Design" },
     { value: "Facebook Post Design", label: "Facebook Post Design" },
     { value: "Flyer Design", label: "Flyer Design" },
   ];
+  const Frequency = [{ value: "Monthly", label: "Monthly" }];
   const App = (props) => {
+    const CountryData = [
+      {
+        optionValue: "1",
+        option: "INR",
+      },
+      {
+        optionValue: "2",
+        option: "USD",
+      },
+    ];
     return (
       <>
         <div className="col-12 Select_Services_row_new_inner_top">
-          <div className="row  align-items-baseline  Select_Services_row Select_Services_row_new">
+          <div className="row g-xxl-4 g-xl-4 g-lg-4 g-md-4 g-sm-3 g-3  align-items-baseline  Select_Services_row Select_Services_row_new">
             <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
               <div className=" Select_Services_row_new_inner">
                 <p>{props.MobileRowNumber}</p>
@@ -450,15 +507,54 @@ const Step3 = () => {
               </div>
             </div>
             <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-              <label className="all_page_my_label_new">Select Service</label>
+              <label className="all_page_my_label_new">
+                Select Sub-Department*
+              </label>
               <div className="dashboard_top_week_Select drop_box">
                 <Select
                   isMulti
-                  options={Service}
-                  placeholder="Select Service"
+                  options={SelectSubDepartment}
+                  placeholder="Select Sub-Department"
                 />
               </div>
             </div>
+            <div className="col-12">
+              <div>
+                <div className="row g-xxl-4 g-xl-4 g-lg-4 g-md-4 g-sm-3 g-3">
+                  <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <label className="all_page_my_label_new">Service</label>
+                    <div className="dashboard_top_week_Select drop_box">
+                      <Select
+                        isMulti
+                        options={Service}
+                        placeholder="Select Service"
+                      />
+                    </div>
+                  </div>
+                  <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div className="row g-xxl-4 g-xl-4 g-lg-4 g-md-4 g-sm-3 g-3">
+                      <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                        <SelectBox label="Budget" SelectBoxData={CountryData} />
+                      </div>
+                      <div className="col-xxl-9 col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
+                        <InputBox
+                          type="number"
+                          placeholder="Service Charge*"
+                          label="Service Charge*"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-12">
+              <label className="all_page_my_label_new">Frequency</label>
+              <div className="dashboard_top_week_Select drop_box">
+                <Select isMulti options={Frequency} placeholder="Monthly" />
+              </div>
+            </div>
+            <hr className=" d-none d-xxl-block d-xl-block d-md-block " />
           </div>
         </div>
       </>
@@ -471,31 +567,16 @@ const Step3 = () => {
     {
       MobileRowNumber: "2",
     },
-    {
-      MobileRowNumber: "3",
-    },
-    {
-      MobileRowNumber: "4",
-    },
-    {
-      MobileRowNumber: "5",
-    },
-    {
-      MobileRowNumber: "6",
-    },
-    {
-      MobileRowNumber: "7",
-    },
   ];
   return (
     <>
       <div className="Client_Profile_title">
-        <h3> Select Services</h3>
+        <h3>Services</h3>
       </div>
-      <div className="m_t">
+      <div>
         <div className="row g-xxl-4 g-xl-4 g-lg-4 g-md-4 g-sm-3 g-3 ">
           {Data.map((val, i) => {
-            return <App key={i} MobileRowNumber={val.MobileRowNumber} />;
+            return <App key={i} {...val} />;
           })}
           <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-5 col-sm-12 col-12 add_Department_btn_div">
             <OutlineBtnWithIcon name="Add More Department" icon={<BsPlus />} />
@@ -507,28 +588,24 @@ const Step3 = () => {
 };
 const Step4 = () => {
   const App = (props) => {
+    const Leads = [
+      { value: "sunny charkhwal", label: "sunny charkhwal" },
+      { value: "kamal dixit", label: "kamal dixit" },
+      { value: "Vivek Rawat", label: "Vivek Rawat" },
+      { value: "akhilesh.soni", label: "akhilesh.soni" },
+    ];
     return (
       <>
         <div className="col-12 Select_Services_row_new_inner_top">
           <div className="row    Select_Services_row Select_Services_row_new">
-            <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
+            <div className="col-12 ">
               <div className=" Select_Services_row_new_inner">
                 <p>{props.MobileRowNumber}</p>
               </div>
-
-              <InputBox
-                type="text"
-                label="Department"
-                placeholder={props.DepartmentType}
-              />
-            </div>
-            <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+              <p className="project_leads">{props.DepartmentType}</p>
+              <label className="all_page_my_label_new">Leads*</label>
               <div className="dashboard_top_week_Select drop_box">
-                <InputBox
-                  type="text"
-                  label="Team Leader*"
-                  placeholder=" Enter name/Email ID"
-                />
+                <Select isMulti options={Leads} placeholder="Leads*" />
               </div>
             </div>
           </div>
@@ -539,40 +616,23 @@ const Step4 = () => {
   const Data = [
     {
       MobileRowNumber: "1",
-      DepartmentType: "Design",
+      DepartmentType: "Google Ads",
     },
     {
       MobileRowNumber: "2",
-      DepartmentType: "Developement",
-    },
-    {
-      MobileRowNumber: "3",
-      DepartmentType: "Marketing",
-    },
-    {
-      MobileRowNumber: "4",
-      DepartmentType: "Others",
+      DepartmentType: "React js Front End",
     },
   ];
   return (
     <>
       <div className="Client_Profile_title">
-        <h3>Select Team Leaders</h3>
+        <h3>Project Leads</h3>
       </div>
       <div className="m_t">
         <div className="row g-xxl-4 g-xl-4 g-lg-4 g-md-4 g-sm-3 g-3 ">
           {Data.map((val, i) => {
-            return (
-              <App
-                key={i}
-                MobileRowNumber={val.MobileRowNumber}
-                DepartmentType={val.DepartmentType}
-              />
-            );
+            return <App key={i} {...val} />;
           })}
-          <div className="col-12 select_team_leaders_CheckBox_div">
-            <CheckBox text="Allow team leader to edit Project Details" id="0" />
-          </div>
         </div>
       </div>
     </>

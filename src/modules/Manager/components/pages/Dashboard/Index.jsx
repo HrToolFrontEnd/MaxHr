@@ -282,11 +282,8 @@ const TodayMeetings = () => {
     <>
       <div className="dashbaord_white_card dashbaord_white_card2">
         <div className="row">
-          <div className="col-6">
+          <div className="col-12">
             <PageInnerTitle name="Today’s Meetings" />
-          </div>
-          <div className="col-6 project_List_view_all_link">
-            <NavLink to="/">View All</NavLink>
           </div>
         </div>
         <div>

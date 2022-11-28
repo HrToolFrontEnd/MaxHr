@@ -144,24 +144,28 @@
 }
 
 .intput_box {
-  border: none !important;
-  background-color: #f4f4f4 !important;
+  border: 1px solid #949494 !important;
+  background-color: white !important;
   font-weight: 400 !important;
   font-size: 14px !important;
-  padding: 10px !important;
+  padding: 8px 10px 8px 15px !important;
+  border-radius: 25px !important;
 }
 .textareaBox_box {
-  border: none !important;
-  background-color: #f4f4f4 !important;
+  border: 1px solid #949494 !important;
+  background-color: white !important;
   font-weight: 400 !important;
   font-size: 14px !important;
+  padding: 8px 10px 8px 15px !important;
+  border-radius: 25px !important;
 }
 .all_page_my_label_new {
   font-weight: 400;
   font-size: 12px;
   margin-bottom: 5px;
-  color: #a8a8a8;
+  color: #252525;
   text-transform: capitalize;
+  margin-left: 13px;
 }
 .Filters_Search_div {
   position: relative;
@@ -178,39 +182,79 @@
 }
 .ClientProfile_normal_dot {
   color: #c9bdbd !important;
+  background: black;
+  border-radius: 100%;
 }
 .Client_Profile_main_top_div {
   position: relative;
   display: block;
 }
+.Appraisal_progress_bar_man {
+  height: 5px;
+}
+//
+.Client_Profile_main_top_div_inner {
+  progress {
+    border: none;
+    background: #eb703b;
+  }
+
+  progress {
+    color: #eb703b;
+  }
+
+  progress::-webkit-progress-value {
+    background: #eb703b;
+  }
+
+  progress::-moz-progress-bar {
+    background: #eb703b;
+  }
+}
+
+//
+.Appraisal_progress_text_bar_mann {
+  svg {
+    color: #eb703b !important;
+  }
+}
 .Client_Profile_svg {
   svg {
     font-size: 25px !important;
     position: absolute;
-    top: 21.5px;
-    margin-left: 91px;
+    top: 2px;
+    margin-left: -7px;
+    background: white;
+    border-radius: 100%;
   }
   label {
-    margin-left: 64px;
+    margin-left: -36px;
     display: block;
+    margin-top: 13px;
   }
 }
 .Client_Profile_svg_last {
   svg {
-    margin-left: 52px !important;
+    margin-left: 0px !important;
   }
 }
 .Client_Profile_svg_last_text {
+  margin-top: 13px;
   margin-bottom: 0;
   display: block;
+  margin-left: -31px;
+  position: absolute;
+  width: 100%;
 }
 .Client_Profile_title {
-  text-align: center;
-  display: none;
+  text-align: left;
+  display: block;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
   h3 {
-    font-size: 16px;
+    font-weight: 500;
+    font-size: 24px;
     text-transform: capitalize;
-    font-weight: 550;
     letter-spacing: 1px;
   }
 }
@@ -218,32 +262,43 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   .manager_btn_full {
     margin-left: 1.5rem;
   }
 }
 .SelectBox_box {
-  border: none !important;
-  background-color: #f4f4f4 !important;
+  border: 1px solid #949494 !important;
+  background-color: white !important;
   font-weight: 400 !important;
   font-size: 14px !important;
-  padding: 10px !important;
+  padding: 8px 10px 8px 15px !important;
+  border-radius: 25px !important;
 }
 .drop_box {
+  .css-1pahdxg-control {
+    box-shadow: none !important;
+    border-radius: 25px !important;
+    padding-left: 10px !important;
+  }
   .css-1s2u09g-control {
-    border: none !important;
-    background-color: #f4f4f4 !important;
+    border: 1px solid #949494 !important;
+    background-color: white !important;
+    border-radius: 25px !important;
+    padding-left: 10px !important;
     font-weight: 400 !important;
     font-size: 14px !important;
   }
   .css-9gakcf-option {
     background-color: #e0e0e0;
-    color: black;
+    color: #6c757d !important;
     border-bottom: 1px solid #8d8d8d;
   }
   .css-yt9ioa-option {
     border-bottom: 1px solid #8d8d8d;
+  }
+  .css-6j8wv5-Input {
+    color: #6c757d !important;
   }
 }
 .Select_Services_row {
@@ -387,5 +442,81 @@
     padding: 3px 4px;
   }
 }
-
+.user_logo_upload_main_div {
+  position: relative;
+  button {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 70px;
+    border: 1px solid #ff8059;
+    outline: none;
+    background-color: white;
+    width: 2rem;
+    height: 2rem;
+    font-size: 19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    svg {
+      color: #ff8059;
+    }
+  }
+  img {
+    border: 4px solid #8e8e8e;
+    border-radius: 100%;
+  }
+}
+.user_logo_upload_img {
+  width: 110px !important;
+  height: 110px !important;
+}
+.breff_label_add_project {
+  font-weight: 500;
+  font-size: 20px;
+  color: black;
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}
+.user_logo_inner_div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.client_profile_uplod_btn_ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  li {
+    p {
+      margin-bottom: 0;
+      font-weight: 400;
+      font-size: 14px;
+      margin-right: 10px;
+      span {
+        svg {
+          transform: rotate(317deg);
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
+.upload_document_btn {
+  // background: #f5f7ff;
+  span {
+    svg {
+      font-size: 17px;
+      margin-left: 12px;
+    }
+  }
+}
+.project_leads {
+  font-weight: 600;
+  font-size: 12px;
+  margin-bottom: 0;
+  margin-left: 13px;
+}
 // Dashboard end

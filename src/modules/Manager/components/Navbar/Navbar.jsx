@@ -11,9 +11,11 @@ import Logo from "../../../../pics/Logo.png";
 import LogoImg from "../../../common/components/NavLogo/Logo";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
 import { AiOutlineSearch } from "react-icons/ai";
-import { RiTableAltFill } from "react-icons/ri";
 import Input from "../../../common/components/input/Input";
 import { useState } from "react";
+import D1 from "../../../../pics/Manager/1.png";
+import D2 from "../../../../pics/Manager/2.png";
+
 const NavUrl = ({ url, icon, description, navItems }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(true);
   const { nav, setNav } = useContext(NavContext);
@@ -82,7 +84,13 @@ const NavUrl = ({ url, icon, description, navItems }) => {
     </li>
   );
 };
-
+const NavImg = (props) => {
+  return (
+    <>
+      <img className="nav_img" src={props.img} alt="icon" />
+    </>
+  );
+};
 const Navbar = () => {
   const { nav, setNav } = useContext(NavContext);
 
@@ -114,9 +122,14 @@ const Navbar = () => {
               </div>
             </div>
             <NavUrl
-              url="dashboard"
-              icon={<RiTableAltFill />}
+              url="/manager/dashboard"
+              icon={<NavImg img={D1} />}
               description="Dashboard"
+            />
+            <NavUrl
+              url="/manager/project_list"
+              icon={<NavImg img={D2} />}
+              description="Projects"
             />
 
             {/* <NavUrl

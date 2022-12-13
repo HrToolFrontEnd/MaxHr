@@ -1,4 +1,4 @@
-import { FullBtn } from "../../../../common/ManagerComponents/Btn/Btn";
+import { OutlineBtn } from "../../../../common/ManagerComponents/Btn/Btn";
 import { WelcomeNote } from "../../../../common/ManagerComponents/WelcomeNote/WelcomeNote";
 import Img from "../../../../common/components/img/Img";
 import Icon1 from "../../../../../pics/Manager/d1.png";
@@ -11,15 +11,18 @@ import { PageInnerTitle } from "../../../../common/ManagerComponents/pageInnerTi
 import { useState } from "react";
 import Calendar from "react-calendar";
 import { useNavigate } from "react-router-dom";
-import { OutlineBtn } from "../../../../common/ManagerComponents/Btn/Btn";
+import { GoPrimitiveDot } from "react-icons/go";
+// mui
+import { ExistingClientModal } from "./ExistingClientModal";
 export const Index = () => {
   return (
     <>
       <WelcomeNote
         name="Shived"
         text="Lets do the best today"
-        data={<FullBtn link="/manager/client_Profile" name="Add Project" />}
+        data={<ExistingClientModal />}
       />
+
       <ProjectSummary />
       <div className="row g-xxl-4 g-xl-4 g-lg-4 g-md-4 g-sm-3 g-3 ">
         <div className="col-xxl-8 col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
@@ -45,12 +48,13 @@ export const Index = () => {
 const ProjectSummary = () => {
   const Data = [
     {
-      link: "/manager/",
+      link: "/manager/project_list",
       backgroundColor: "#F1C21B",
       icon: Icon1,
       color: "white",
       number: "12",
       text: "New Projects",
+      DotColor: "#DA1E28",
     },
     {
       link: "/",
@@ -59,6 +63,7 @@ const ProjectSummary = () => {
       color: "white",
       number: "12",
       text: "Projects Running Late",
+      DotColor: "white",
     },
     {
       link: "/",
@@ -67,6 +72,7 @@ const ProjectSummary = () => {
       color: "white",
       number: "12",
       text: "My Tasks",
+      DotColor: "#DA1E28",
     },
     {
       link: "/",
@@ -75,6 +81,7 @@ const ProjectSummary = () => {
       color: "white",
       number: "12",
       text: "Approval Requests",
+      DotColor: "white",
     },
   ];
   const App = (props) => {
@@ -87,11 +94,14 @@ const ProjectSummary = () => {
               style={{ backgroundColor: props.backgroundColor }}
             >
               <div className="row">
-                <div className="col-12">
+                <div className="col-12 position-relative">
                   <Img
                     backgroundImage={props.icon}
                     className="project_summary_card_icon"
                   />
+                  <span className="project_summary_card_icon_dot">
+                    <GoPrimitiveDot style={{ color: props.DotColor }} />
+                  </span>
                   <div>
                     <p style={{ color: props.color }}>
                       <span>{props.number}</span>
@@ -185,7 +195,6 @@ const ProjectList = () => {
                     role="progressbar"
                     style={{
                       width: props.ProgressBar + "%",
-                      backgroundColor: props.PrioritybackgroundColor,
                     }}
                     aria-valuenow="0"
                     aria-valuemin="0"
@@ -239,41 +248,52 @@ const TodayMeetings = () => {
     {
       link: "/",
       ProjectName: "Merchant Discounts & Offers",
-      titme: "11:00 (IST)",
-    },
-    {
-      link: "/",
-      ProjectName: "Discussion on Website Design Hompage",
-      titme: "20:00 (AEST)",
-    },
-    {
-      link: "/",
-      ProjectName: "Campaign Setup for Google Ads & Facebook Ads",
-      titme: "16:00 (IST)",
+      titme: "10:20 - 11:00",
+      borderColor: "#F1C21B",
     },
     {
       link: "/",
       ProjectName: "Merchant Discounts & Offers",
-      titme: "16:00 (IST)",
+      titme: "10:20 - 11:00",
+      borderColor: "#393939",
     },
     {
       link: "/",
       ProjectName: "Merchant Discounts & Offers",
-      titme: "16:00 (IST)",
+      titme: "10:20 - 11:00",
+      borderColor: "#DA1E28",
+    },
+    {
+      link: "/",
+      ProjectName: "Merchant Discounts & Offers",
+      titme: "10:20 - 11:00",
+      borderColor: "#31C971",
     },
   ];
   const ProjectListApp = (props) => {
     return (
       <>
-        <tr>
-          <td className="project_list_name">{props.ProjectName}</td>
-          <td className="project_list_name">{props.titme}</td>
-          <td>
+        <div className="row project_list_name_top_div">
+          <div className=" col-10 ">
+            <div
+              style={{ borderColor: props.borderColor }}
+              className="project_list_name project_list_name_boder"
+            >
+              <h3>
+                {props.titme} <span>am</span>
+              </h3>
+              {props.ProjectName}
+              <p>
+                Lead by <span>Peter Marcus</span>
+              </p>
+            </div>
+          </div>
+          <div className="col-2">
             <div className="today_meetings_btn_div">
               <OutlineBtn link={props.link} name="Join" />
             </div>
-          </td>
-        </tr>
+          </div>
+        </div>
       </>
     );
   };
@@ -287,19 +307,9 @@ const TodayMeetings = () => {
           </div>
         </div>
         <div>
-          <table className="table project_tabel table-borderless text-capitalize">
-            <thead>
-              <tr className="project_list_title">
-                <th scope="col">Title</th>
-                <th scope="col">Time</th>
-              </tr>
-            </thead>
-            <tbody className="project_list_name_tr">
-              {ProjectListData.map((val, i) => {
-                return <ProjectListApp key={i} {...val} />;
-              })}
-            </tbody>
-          </table>
+          {ProjectListData.map((val, i) => {
+            return <ProjectListApp key={i} {...val} />;
+          })}
         </div>
       </div>
     </>

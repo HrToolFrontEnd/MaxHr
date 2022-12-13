@@ -1,6 +1,190 @@
 @import "../--mixing.scss";
 @import "../--var.scss";
 @media (max-width: 576px) {
+  .service_overview_details {
+    h4 {
+      font-size: 11px;
+    }
+    h5 {
+      font-size: 11px;
+    }
+  }
+  .doc_img_main_div .doc_img_main_div_inner {
+    svg {
+      right: -10px;
+      font-size: 14px;
+    }
+  }
+  .documents_app_btn {
+    .manager_btn_full2 {
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    label {
+      span {
+        display: none;
+      }
+    }
+  }
+  .all_edit_icon .all_edit_icon_inner {
+    right: -8px;
+    font-size: 13px;
+    width: 20px;
+    height: 20px;
+  }
+  .overview_basic_details_div {
+    ul {
+      li {
+        font-weight: 600;
+        font-size: 12px;
+        p {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+  .circular_static_div {
+    span {
+      width: 5rem !important;
+      height: 5rem !important;
+    }
+  }
+  .team_work_progress {
+    display: block;
+  }
+  .circular_static_div_text {
+    h3 {
+      display: block;
+      font-size: 16px;
+    }
+    p {
+      display: block;
+      font-size: 10px;
+      margin-bottom: 7px;
+    }
+  }
+  .circular_static_div_main_div {
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+  .circular_static_div_text {
+    margin: 0;
+  }
+  .ProjectDetailsCard_line_mobile {
+    display: block;
+  }
+  .circular_static_div {
+    display: block;
+    margin-right: 10px;
+    .css-ol7wxs-MuiTypography-root {
+      width: 90%;
+      height: 90%;
+      font-size: 15px;
+    }
+  }
+  .project_details_card_box {
+    padding: 7px 7px;
+    width: 5rem;
+    text-align: center;
+    margin-right: 5px;
+    p {
+      font-size: 10px;
+    }
+  }
+  .project_details_card_box_main_div {
+    text-align: center;
+    display: block;
+    .css-1ytufz-MuiAvatarGroup-root {
+      justify-content: center;
+      margin-top: 18px;
+    }
+  }
+  .project_details_card_name {
+    margin-bottom: 10px;
+    text-align: center;
+    h3 {
+      font-size: 19px;
+      margin-top: 10px;
+    }
+  }
+  .ProjectDetailsCard_img {
+    width: 15rem;
+    height: 15rem;
+  }
+  .img_dashbaord_white_card_new {
+    text-align: center;
+  }
+  .dashbaord_white_card_new {
+    padding: 1rem;
+  }
+  .page_All_top_title {
+    h3 {
+      font-size: 13px;
+    }
+  }
+  .project_list_name_top_div {
+    position: relative;
+    .today_meetings_btn_div {
+      position: absolute;
+      top: 0;
+      right: 5px;
+      .manager_btn_outline {
+        padding: 4px 10px;
+      }
+    }
+  }
+  .milestones_emp {
+    margin-left: unset;
+  }
+  .projec_tabelt_list_pagination_div {
+    ul {
+      li {
+        button {
+          min-width: 25px;
+          height: 25px;
+          padding: 0 !important;
+          margin: 0 !important;
+        }
+      }
+    }
+  }
+  .progress_all_tabel_tabel {
+    overflow-x: auto;
+    white-space: nowrap;
+    display: block;
+  }
+  .progress_all_tabel {
+    .progress {
+      display: none;
+    }
+  }
+  .project_list_tabs_inner_btn {
+    top: -55px;
+  }
+  .project_list_tabs_main_div {
+    .nav-pills .nav-link {
+      width: 13rem;
+      text-align: center;
+    }
+    .nav {
+      overflow-x: scroll;
+      width: 100%;
+      flex-wrap: nowrap;
+    }
+  }
+
+  .welcome_note_btn_div {
+    .manager_btn_full2 {
+      font-size: 12px;
+      width: 100px;
+      position: absolute;
+      top: 0;
+      right: 10px;
+      padding: 8px 8px;
+    }
+  }
   .project_summary_title {
     h3 {
       font-size: 16px;
@@ -125,17 +309,161 @@
   }
 }
 @media (min-width: 768px) {
+  .ProjectDetailsCard_line_mobile {
+    display: none;
+  }
+  .circular_static_div_text {
+    h3 {
+      display: none;
+    }
+    p {
+      display: none;
+    }
+    button {
+      position: absolute;
+      top: 22px;
+      right: 20px;
+      width: 9rem;
+    }
+  }
+  .circular_static_div {
+    display: block;
+    position: absolute;
+    top: 48%;
+    right: 8%;
+    span {
+      width: 4rem !important;
+      height: 4rem !important;
+    }
+  }
+  .project_details_card_box_main_div {
+    display: block;
+    .css-1ytufz-MuiAvatarGroup-root {
+      justify-content: flex-end;
+      margin-top: 10px;
+    }
+  }
+  .project_details_card_name {
+    margin-bottom: 10px;
+  }
+  .progress_all_tabel_tabel {
+    overflow-x: auto;
+    white-space: nowrap;
+    display: block;
+  }
+  .progress_all_tabel {
+    .progress {
+      display: none;
+    }
+  }
+  .project_list_tabs_inner_btn {
+    top: -55px;
+  }
+  .project_list_tabs_main_div {
+    .nav-pills .nav-link {
+      width: 13rem;
+      text-align: center;
+    }
+    .nav {
+      overflow-x: scroll;
+      width: 100%;
+      flex-wrap: nowrap;
+    }
+  }
   .project_list_progress {
     width: 13rem;
   }
 }
 @media (min-width: 1024px) {
+  .circular_static_div_text {
+    h3 {
+      display: block;
+    }
+    p {
+      display: block;
+    }
+    button {
+      position: relative;
+    }
+  }
+  .project_details_card_box_main_div {
+    display: flex;
+    .css-1ytufz-MuiAvatarGroup-root {
+      justify-content: unset;
+      margin-top: unset;
+    }
+  }
+  .circular_static_div_text {
+    margin: 0 11px;
+  }
+  .circular_static_div {
+    position: absolute;
+    top: 10px;
+    right: 50%;
+    span {
+      width: 5rem !important;
+      height: 5rem !important;
+    }
+  }
+  .ProjectDetailsCard_img {
+    width: 9rem;
+    height: 9rem;
+  }
+  .project_details_card_box {
+    padding: 7px 12px;
+  }
+  .project_details_card_name {
+    margin-bottom: 2.4rem;
+  }
+  .progress_all_tabel_tabel {
+    display: inline-table;
+  }
+  .progress_all_tabel {
+    .progress {
+      display: flex;
+    }
+  }
+  .project_list_tabs_inner_btn {
+    top: 0px;
+  }
+  .project_list_tabs_main_div {
+    .nav-pills .nav-link {
+      width: unset;
+    }
+    .nav {
+      overflow-x: unset;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+  }
   .project_list_progress {
     width: 7rem;
   }
 }
 @media (min-width: 1440px) {
+  .circular_static_div_text {
+    margin: 0 20px;
+  }
+  .ProjectDetailsCard_img {
+    width: 10rem;
+    height: 10rem;
+  }
+  .project_details_card_box {
+    padding: 7px 13px;
+  }
+  .project_details_card_name {
+    margin-bottom: 3.4rem;
+  }
   .project_list_progress {
     width: 13rem;
+  }
+  .circular_static_div {
+    position: relative;
+    top: unset;
+    right: unset;
+    span {
+      width: 7rem !important;
+      height: 7rem !important;
+    }
   }
 }

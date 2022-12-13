@@ -3,6 +3,7 @@ import { BsArrowLeft } from "react-icons/bs";
 import { useState } from "react";
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
+import { ProfileImg } from "../../../../../common/ManagerComponents/ProfileImg";
 import {
   InputBox,
   SelectBox,
@@ -15,12 +16,11 @@ import { OutlineBtnWithIcon } from "../../../../../common/ManagerComponents/Btn/
 import { BsPlus } from "react-icons/bs";
 import { FiCircle } from "react-icons/fi";
 import React, { Component } from "react";
-import { MdOutlineEdit } from "react-icons/md";
 import { BsUpload } from "react-icons/bs";
+
 // mui
-import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
 import { CgAttachment } from "react-icons/cg";
+let Photo = "https://source.unsplash.com/random/500x500/?woman";
 export const ClientProfile = () => {
   return (
     <>
@@ -39,11 +39,12 @@ export const ClientProfile = () => {
 };
 
 export const ClientProfileStep = () => {
+  const navigate = useNavigate();
   const steps = [<Step1 />, <Step2 />, <Step3 />, <Step4 />];
   const [currentStep, setCurrentStep] = useState(0);
   const getCurrentStepCheckbox = (index) => {
     if (currentStep === index) return <AiOutlineCheckCircle />;
-    else if (currentStep > index) return <FiCircle />;
+    else if (currentStep > index) return <AiOutlineCheckCircle />;
     else return <FiCircle className="ClientProfile_normal_dot" />;
   };
   return (
@@ -102,11 +103,14 @@ export const ClientProfileStep = () => {
                 <div>
                   <button
                     className="manager_btn_full"
-                    onClick={() => setCurrentStep((old) => old + 1)}
-                    disabled={steps.length === currentStep + 1}
+                    onClick={() => {
+                      setCurrentStep((old) => old + 1);
+                      if (steps.length === currentStep + 1) navigate("/");
+                    }}
+                    // disabled={steps.length === currentStep + 1}
                   >
                     {steps.length === currentStep + 1
-                      ? "Finish"
+                      ? "Save"
                       : "Save and Continue"}
                   </button>
                 </div>
@@ -231,7 +235,6 @@ const Step1 = () => {
 };
 
 const Step2 = () => {
-  let UserImg = "https://picsum.photos/id/64/200/300";
   const navigate = useNavigate();
   const ProjectIndustry = [
     { value: "High", label: "High" },
@@ -275,37 +278,7 @@ const Step2 = () => {
     { value: "Project from Website", label: "Project from Website" },
     { value: "Project from BD Team", label: "Project from BD Team" },
   ];
-  class UserLogoUploadButton extends Component {
-    handleFileUpload = (event) => {
-      console.log(event.target.files[0].name);
-    };
 
-    render() {
-      return (
-        <>
-          <input
-            ref="fileInput"
-            onChange={this.handleFileUpload}
-            type="file"
-            style={{ display: "none" }}
-            // multiple={false}
-          />
-          <div className=" user_logo_upload_main_div">
-            <button onClick={() => this.refs.fileInput.click()}>
-              <MdOutlineEdit />
-            </button>
-            <Stack direction="row" spacing={2}>
-              <Avatar
-                alt="Remy Sharp"
-                src={UserImg}
-                className="user_logo_upload_img"
-              />
-            </Stack>
-          </div>
-        </>
-      );
-    }
-  }
   class UploadDocument extends Component {
     handleFileUpload = (event) => {
       console.log(event.target.files[0].name);
@@ -367,7 +340,7 @@ const Step2 = () => {
             </div>
             <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 order-md-2 order-1 user_logo_inner_div">
               <div>
-                <UserLogoUploadButton />
+                <ProfileImg Photo={Photo} />
               </div>
             </div>
           </div>
@@ -518,42 +491,68 @@ const Step3 = () => {
                 />
               </div>
             </div>
-            <div className="col-12">
-              <div>
-                <div className="row g-xxl-4 g-xl-4 g-lg-4 g-md-4 g-sm-3 g-3">
-                  <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                    <label className="all_page_my_label_new">Service</label>
-                    <div className="dashboard_top_week_Select drop_box">
-                      <Select
-                        isMulti
-                        options={Service}
-                        placeholder="Select Service"
-                      />
+            <div className="col-12 px-4">
+              <div className="row g-xxl-4 g-xl-4 g-lg-4 g-md-4 g-sm-3 g-3 ">
+                <div className="col-12">
+                  <div>
+                    <div className="row g-xxl-4 g-xl-4 g-lg-4 g-md-4 g-sm-3 g-3">
+                      <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <label className="all_page_my_label_new">Service</label>
+                        <div className="dashboard_top_week_Select drop_box">
+                          <Select
+                            isMulti
+                            options={Service}
+                            placeholder="Select Service"
+                          />
+                        </div>
+                      </div>
+                      <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div className="row g-xxl-4 g-xl-4 g-lg-4 g-md-4 g-sm-3 g-3">
+                          <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                            <SelectBox
+                              label="Budget"
+                              SelectBoxData={CountryData}
+                            />
+                          </div>
+                          <div className="col-xxl-9 col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
+                            <InputBox
+                              type="number"
+                              placeholder="Service Charge*"
+                              label="Service Charge*"
+                            />
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                    <div className="row g-xxl-4 g-xl-4 g-lg-4 g-md-4 g-sm-3 g-3">
-                      <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
-                        <SelectBox label="Budget" SelectBoxData={CountryData} />
-                      </div>
-                      <div className="col-xxl-9 col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
-                        <InputBox
-                          type="number"
-                          placeholder="Service Charge*"
-                          label="Service Charge*"
+                </div>
+                <div className="col-12">
+                  <div className="row">
+                    <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                      <label className="all_page_my_label_new">Frequency</label>
+                      <div className="dashboard_top_week_Select drop_box">
+                        <Select
+                          isMulti
+                          options={Frequency}
+                          placeholder="Monthly"
                         />
                       </div>
                     </div>
                   </div>
                 </div>
+                <div className="col-12">
+                  <div className="row">
+                    <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12 ">
+                      <OutlineBtnWithIcon
+                        name="Add  Service"
+                        icon={<BsPlus />}
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="col-12">
-              <label className="all_page_my_label_new">Frequency</label>
-              <div className="dashboard_top_week_Select drop_box">
-                <Select isMulti options={Frequency} placeholder="Monthly" />
-              </div>
-            </div>
+
             <hr className=" d-none d-xxl-block d-xl-block d-md-block " />
           </div>
         </div>

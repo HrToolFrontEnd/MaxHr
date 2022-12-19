@@ -1,7 +1,9 @@
 @import "--var.scss";
 @import "--mixing.scss";
-@import "../../node_modules/@ibm//plex/css/ibm-plex.css";
-$font-prefix: "./custom/path/to/font/files";
+// @import "../../node_modules/@ibm//plex/css/ibm-plex.css";
+// $font-prefix: "./custom/path/to/font/files";
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -36,7 +38,8 @@ div,
 a,
 button,
 strong {
-  font-family: IBM Plex Sans !important;
+  // font-family: IBM Plex Sans !important;
+  font-family: "Manrope", sans-serif !important;
 }
 .online4 {
   display: none;

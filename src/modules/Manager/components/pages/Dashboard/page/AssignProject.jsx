@@ -2,13 +2,9 @@ import { PageAllTopTitle } from "../../../../../common/ManagerComponents/PageAll
 import { BsArrowLeft } from "react-icons/bs";
 import { useState } from "react";
 import Select from "react-select";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { InputBox } from "../../../../../common/ManagerComponents/form/Form";
 import { AiOutlineCheckCircle } from "react-icons/ai";
-import {
-  OutlineBtnWithIcon,
-  OutlineBtn,
-} from "../../../../../common/ManagerComponents/Btn/Btn";
 import { BsPlus } from "react-icons/bs";
 import { FiCircle } from "react-icons/fi";
 
@@ -36,7 +32,7 @@ const ClientProfileStep = () => {
       <div className="custom_container_iner">
         <div className="row"></div>
         <div className="Appraisal_progress_bar_custom_container">
-          <div className=" Client_Profile_main_top_div ">
+          <div className=" Client_Profile_main_top_div  Client_Profile_main_top_div_new ">
             <div className="Client_Profile_main_top_div_inner">
               <progress
                 className="Appraisal_progress_bar Appraisal_progress_bar_man"
@@ -55,11 +51,13 @@ const ClientProfileStep = () => {
                   <label>Team Members</label>
                 </li>
                 <li>
-                  <span>{getCurrentStepCheckbox(1)}</span>
-                  <label>Milestones</label>
+                  <span className="Client_Profile_svg_new_new">
+                    {getCurrentStepCheckbox(1)}
+                  </span>
+                  <label className="Client_Profile_svg_new">Milestones</label>
                 </li>
                 <li>
-                  <span className="Client_Profile_svg_last">
+                  <span className="Client_Profile_svg_last ">
                     {getCurrentStepCheckbox(2)}
                   </span>
                   <p className="Client_Profile_svg_last_text">Sprints</p>
@@ -67,7 +65,7 @@ const ClientProfileStep = () => {
               </ul>
             </div>
           </div>
-          <div>{steps[currentStep]}</div>
+          <div className="inner_mr">{steps[currentStep]}</div>
           <div>
             <div className=" Client_Profile_btn_div">
               <div>
@@ -121,7 +119,7 @@ const Step1 = () => {
               </div>
               <p className="project_leads">{props.DepartmentType}</p>
               <label className="all_page_my_label_new">Team Members*</label>
-              <div className="dashboard_top_week_Select drop_box">
+              <div className="dashboard_top_week_Select drop_box drop_box2">
                 <Select isMulti options={Leads} placeholder="Team Members*" />
               </div>
             </div>
@@ -143,17 +141,15 @@ const Step1 = () => {
   return (
     <>
       <div className="row align-items-baseline">
-        <div className="col-xxl-9 col-xl-9 col-lg-8 col-md-8 col-sm-12 col-12">
+        <div className="col-xxl-8 col-xl-8 col-lg-7 col-md-6 col-sm-12 col-12">
           <div className="Client_Profile_title">
             <h3>Team Members</h3>
           </div>
         </div>
-        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
-          <OutlineBtn
-            link="/manager/project_details"
-            name="View Project Details"
-            icon={<BsPlus />}
-          />
+        <div className="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-12 col-12">
+          <NavLink to="/manager/project_details" className="text_btn">
+            View Project Details
+          </NavLink>
         </div>
       </div>
       <div className="m_t">
@@ -189,7 +185,7 @@ const Step2 = () => {
               </div>
               <p className="project_leads">{props.DepartmentType}</p>
               <label className="all_page_my_label_new">Milestones*</label>
-              <div className="dashboard_top_week_Select drop_box">
+              <div className="dashboard_top_week_Select drop_box drop_box2">
                 <Select
                   isMulti
                   options={Milestones}
@@ -197,21 +193,25 @@ const Step2 = () => {
                 />
               </div>
             </div>
-            <div className="col-12  mt-2 milestones_emp ">
+            <div className="col-12  mt-2  ">
               <div className="row g-3">
                 <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                   <label className="all_page_my_label_new">Employee*</label>
-                  <div className="dashboard_top_week_Select drop_box">
+                  <div className="dashboard_top_week_Select drop_box ">
                     <Select options={Employee} placeholder="Employee*" />
                   </div>
                 </div>
                 <div className="col-12">
                   <div className="row">
                     <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12 ">
-                      <OutlineBtnWithIcon
-                        name="Add  Service"
-                        icon={<BsPlus />}
-                      />
+                      <div className="milestones_emp">
+                        <button>
+                          <span>
+                            <BsPlus />
+                            Add Service
+                          </span>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -236,17 +236,15 @@ const Step2 = () => {
   return (
     <>
       <div className="row align-items-baseline">
-        <div className="col-xxl-9 col-xl-9 col-lg-8 col-md-8 col-sm-12 col-12">
+        <div className="col-xxl-8 col-xl-8 col-lg-7 col-md-6 col-sm-12 col-12">
           <div className="Client_Profile_title">
             <h3>Milestones</h3>
           </div>
         </div>
-        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
-          <OutlineBtn
-            link="/manager/project_details"
-            name="View Project Details"
-            icon={<BsPlus />}
-          />
+        <div className="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-12 col-12">
+          <NavLink to="/manager/project_details" className="text_btn">
+            View Project Details
+          </NavLink>
         </div>
       </div>
       <div className="m_t">
@@ -298,17 +296,15 @@ const Step3 = () => {
   return (
     <>
       <div className="row align-items-baseline">
-        <div className="col-xxl-9 col-xl-9 col-lg-8 col-md-8 col-sm-12 col-12">
+        <div className="col-xxl-8 col-xl-8 col-lg-7 col-md-6 col-sm-12 col-12">
           <div className="Client_Profile_title">
             <h3>Sprints</h3>
           </div>
         </div>
-        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
-          <OutlineBtn
-            link="/manager/project_details"
-            name="View Project Details"
-            icon={<BsPlus />}
-          />
+        <div className="col-xxl-4 col-xl-4 col-lg-5 col-md-6 col-sm-12 col-12">
+          <NavLink to="/manager/project_details" className="text_btn">
+            View Project Details
+          </NavLink>
         </div>
       </div>
       <div className="m_t">

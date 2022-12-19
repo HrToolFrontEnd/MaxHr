@@ -28,6 +28,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { NavLink, useNavigate } from "react-router-dom";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
+import { Chat } from "../../chat/Chat";
 // img link
 let Photo = "https://source.unsplash.com/random/500x500/?girl";
 export const ProjectDetails = () => {
@@ -74,12 +75,22 @@ const ProjectDetailsCard = () => {
                 <p>124/200</p>
                 <span>Open Tasks</span>
               </div>
-              <AvatarGroup total={24}>
-                <Avatar alt="Remy Sharp" src={Photo} />
-                <Avatar alt="Travis Howard" src={Photo} />
-                <Avatar alt="Agnes Walker" src={Photo} />
-                <Avatar alt="Trevor Henderson" src={Photo} />
-              </AvatarGroup>
+              <div className="avatar_inner_div">
+                <Img className="avatar_inner" backgroundImage={Photo} />
+                <Img
+                  className="avatar_inner avatar_inner_div_over"
+                  backgroundImage={Photo}
+                />
+                <Img
+                  className="avatar_inner avatar_inner_div_over"
+                  backgroundImage={Photo}
+                />
+                <Img
+                  className="avatar_inner avatar_inner_div_over"
+                  backgroundImage={Photo}
+                />
+                <div className="avatar_inner_plus">+15</div>
+              </div>
             </div>
           </div>
           <div className="col-xxl-4 col-xl-4 col-lg-3 col-md-6 col-sm-12 col-12">
@@ -132,7 +143,9 @@ const MyTab = () => {
             <Tab.Pane eventKey="Team">
               <TeamWorkProgress />
             </Tab.Pane>
-            <Tab.Pane eventKey="Chats">Chats</Tab.Pane>
+            <Tab.Pane eventKey="Chats">
+              <Chat />
+            </Tab.Pane>
             <Tab.Pane eventKey="Meetings">
               <Meetings />
             </Tab.Pane>
@@ -152,8 +165,10 @@ const Meetings = () => {
             <div className="col-xxl-10 col-xl-10 col-lg-10 col-md-9 col-sm-6 col-6">
               <PageAllTopTitle title="Scheduled Meetings" />
             </div>
-            <div className="ol-xxl-2 col-xl-2 col-lg-2 col-md-3 col-sm-6 col-6">
-              <OutlineBtn link="/" name="View All Tasks" />
+            <div className="ol-xxl-2 col-xl-2 col-lg-2 col-md-3 col-sm-6 col-6 text-end">
+              <NavLink to="/" className="text_btn">
+                View All Meetings
+              </NavLink>
             </div>
           </div>
         </div>
@@ -165,8 +180,10 @@ const Meetings = () => {
             <div className="col-xxl-10 col-xl-10 col-lg-10 col-md-9 col-sm-6 col-6">
               <PageAllTopTitle title="Recent Notes" />
             </div>
-            <div className="ol-xxl-2 col-xl-2 col-lg-2 col-md-3 col-sm-6 col-6">
-              <OutlineBtn link="/" name="View All Notes" />
+            <div className="ol-xxl-2 col-xl-2 col-lg-2 col-md-3 col-sm-6 col-6 text-end">
+              <NavLink to="/" className="text_btn">
+                View All Notes
+              </NavLink>
             </div>
           </div>
         </div>

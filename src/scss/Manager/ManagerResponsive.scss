@@ -1,6 +1,13 @@
 @import "../--mixing.scss";
 @import "../--var.scss";
 @media (max-width: 576px) {
+  .avatar_inner_div {
+    margin-top: 10px;
+    justify-content: center;
+  }
+  .inner_mr {
+    margin: 0 0;
+  }
   .service_overview_details {
     h4 {
       font-size: 11px;
@@ -309,6 +316,9 @@
   }
 }
 @media (min-width: 768px) {
+  .avatar_inner_div {
+    margin-top: 10px;
+  }
   .ProjectDetailsCard_line_mobile {
     display: none;
   }
@@ -375,6 +385,9 @@
   }
 }
 @media (min-width: 1024px) {
+  .avatar_inner_div {
+    margin-top: 0;
+  }
   .circular_static_div_text {
     h3 {
       display: block;

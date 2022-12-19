@@ -160,6 +160,13 @@ const Step1 = () => {
           <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
             <InputBox
               type="text"
+              placeholder="Designation"
+              label="Designation / role"
+            />
+          </div>
+          <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <InputBox
+              type="text"
               placeholder="Client’s Organization Name if any available"
               label="Organisation Name*"
             />
@@ -603,7 +610,7 @@ const Step4 = () => {
               </div>
               <p className="project_leads">{props.DepartmentType}</p>
               <label className="all_page_my_label_new">Leads*</label>
-              <div className="dashboard_top_week_Select drop_box">
+              <div className="dashboard_top_week_Select drop_box drop_box2">
                 <Select isMulti options={Leads} placeholder="Leads*" />
               </div>
             </div>

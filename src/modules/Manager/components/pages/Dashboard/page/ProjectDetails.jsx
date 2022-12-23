@@ -12,10 +12,16 @@ import { GrAttachment } from "react-icons/gr";
 import { IoChatbubblesOutline } from "react-icons/io5";
 import { ImHeadphones } from "react-icons/im";
 import React from "react";
-import { BiEdit } from "react-icons/bi";
+import { BiEdit, BiDotsHorizontalRounded } from "react-icons/bi";
 import { BsUpload } from "react-icons/bs";
 import PdfIcon from "../../../../../../pics/Manager/pdf.png";
 import { useState } from "react";
+import { PageInnerTitle } from "../../../../../common/ManagerComponents/pageInnerTitle/Title";
+import Drag from "../../../../../../pics/Manager/drag.png";
+import Down from "../../../../../../pics/Manager/down.png";
+import ReactApexChart from "react-apexcharts";
+import { Dropdown, ButtonToolbar } from "rsuite";
+
 // mui
 import { CircularStatic } from "./CircularStatic";
 import Pagination from "@mui/material/Pagination";
@@ -26,11 +32,138 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { NavLink, useNavigate } from "react-router-dom";
-import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
 import { Chat } from "../../chat/Chat";
+import Switch from "@mui/material/Switch";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
 // img link
 let Photo = "https://source.unsplash.com/random/500x500/?girl";
+let Photo2 = "https://source.unsplash.com/random/500x500/?girl,face";
+let charts = [
+  {
+    title: "Task Status",
+    data: {
+      series: [10, 30],
+      options: {
+        colors: ["#5AE1E2", "#0878FF"],
+        chart: {
+          type: "pie",
+          stacked: false,
+          toolbar: {
+            show: false,
+          },
+        },
+        dataLabels: {
+          enabled: true,
+          position: "top",
+          textAnchor: "start",
+          style: {
+            colors: ["#fff"],
+          },
+        },
+        legend: {
+          show: false,
+        },
+        bar: {
+          barWidth: "10%",
+        },
+      },
+    },
+  },
+
+  {
+    title: "Issue Status",
+    data: {
+      series: [100],
+      options: {
+        colors: ["#0878FF"],
+        chart: {
+          type: "pie",
+          stacked: false,
+          toolbar: {
+            show: false,
+          },
+        },
+        dataLabels: {
+          enabled: true,
+          position: "top",
+          textAnchor: "start",
+          style: {
+            colors: ["#fff"],
+          },
+        },
+        legend: {
+          show: false,
+        },
+        bar: {
+          barWidth: "10%",
+        },
+      },
+    },
+  },
+  {
+    title: "Milestone Status",
+    data: {
+      series: [56, 22, 22],
+      options: {
+        colors: ["#0878FF", "#5AE1E2", "#E6ECF6"],
+        chart: {
+          type: "pie",
+          stacked: false,
+          toolbar: {
+            show: false,
+          },
+        },
+        dataLabels: {
+          enabled: true,
+          position: "top",
+          textAnchor: "start",
+          style: {
+            colors: ["#fff"],
+          },
+        },
+        legend: {
+          show: false,
+        },
+        bar: {
+          barWidth: "10%",
+        },
+      },
+    },
+  },
+  {
+    title: "Bugs/Issues",
+    data: {
+      series: [56, 22, 22],
+      options: {
+        colors: ["#0878FF", "#5AE1E2", "#E6ECF6"],
+        chart: {
+          type: "pie",
+          stacked: false,
+          toolbar: {
+            show: false,
+          },
+        },
+        dataLabels: {
+          enabled: true,
+          position: "top",
+          textAnchor: "start",
+          style: {
+            colors: ["#fff"],
+          },
+        },
+        legend: {
+          show: false,
+        },
+        bar: {
+          barWidth: "10%",
+        },
+      },
+    },
+  },
+];
+// index
 export const ProjectDetails = () => {
   return (
     <>
@@ -48,6 +181,8 @@ export const ProjectDetails = () => {
     </>
   );
 };
+// index end
+// top card
 const ProjectDetailsCard = () => {
   return (
     <>
@@ -110,6 +245,8 @@ const ProjectDetailsCard = () => {
     </>
   );
 };
+// top card end
+// tab
 const MyTab = () => {
   return (
     <>
@@ -136,7 +273,12 @@ const MyTab = () => {
           </div>
 
           <Tab.Content>
-            <Tab.Pane eventKey="first">1</Tab.Pane>
+            <Tab.Pane eventKey="first">
+              <div className="Dashboard_menu_right">
+                <TabsMenu />
+              </div>
+              <ProjectDashboard />
+            </Tab.Pane>
             <Tab.Pane eventKey="Overview">
               <Overview />
             </Tab.Pane>
@@ -155,6 +297,7 @@ const MyTab = () => {
     </>
   );
 };
+// tab end
 // Meetings & Notes
 const Meetings = () => {
   return (
@@ -963,3 +1106,582 @@ const ServiceOverview = () => {
   );
 };
 // Overview end
+// Project Dashboard
+const ProjectDashboard = () => {
+  return (
+    <>
+      <div className="row g-xxl-4 g-xl-4 g-lg-4 g-md-4 g-sm-3 g-3 ">
+        <div className="col-xxl-8 col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+          <div className="row g-xxl-4 g-xl-4 g-lg-4 g-md-4 g-sm-3 g-3">
+            <div className="col-12">
+              <Progress />
+            </div>
+            <div className="col-12">
+              <TeamStatus />
+            </div>
+            <div className="col-12">
+              <WeeklyDigest />
+            </div>
+            <div className="col-12">
+              <ProjectCostChart />
+            </div>
+          </div>
+        </div>
+
+        <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+          <div className="row g-xxl-4 g-xl-4 g-lg-4 g-md-4 g-sm-3 g-3">
+            {charts.map((chart, i) => (
+              <div className="col-12" key={i}>
+                <TaskStatusChart {...chart} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+const Progress = () => {
+  const ProjectListData = [
+    {
+      link: "/",
+      ProjectName: "Luno Electrical Website design",
+      PrioritybackgroundColor: "#FF3E48",
+      PriorityName: "Delayed",
+      ProgressBar: "80",
+    },
+    {
+      link: "/",
+      ProjectName: "Luno Electrical Website design",
+      PrioritybackgroundColor: "#FF3E48",
+      PriorityName: "On Track",
+      ProgressBar: "60",
+    },
+    {
+      link: "/",
+      ProjectName: "Luno Electrical Website design",
+      PrioritybackgroundColor: "#FF3E48",
+      PriorityName: "Delayed",
+      ProgressBar: "45",
+    },
+    {
+      link: "/",
+      ProjectName: "Luno Electrical Website design",
+      PrioritybackgroundColor: "#FF3E48",
+      PriorityName: "On Track",
+      ProgressBar: "23",
+    },
+    {
+      link: "/",
+      ProjectName: "Luno Electrical Website design",
+      PrioritybackgroundColor: "#FF3E48",
+      PriorityName: "Delayed",
+      ProgressBar: "30",
+    },
+  ];
+  const ProjectListApp = (props) => {
+    return (
+      <>
+        <tr>
+          <td className="project_list_name">{props.ProjectName}</td>
+          <td className="project_list_name Progress_title_details_midel">
+            {props.PriorityName}
+          </td>
+          <td className="project_list_name project_details_bar_div ">
+            <div className="Participants_main_div_tr Progress_title_details_top">
+              <div className="row align-items-center">
+                <div className="col-12 Progress_title_details">
+                  <span>{props.ProgressBar}%</span>
+                </div>
+                <div className="col-12">
+                  <div className="d-none d-xxl-block d-xl-block d-lg-block d-md-block">
+                    <div className="progress ">
+                      <div
+                        className="progress-bar"
+                        role="progressbar"
+                        style={{
+                          width: props.ProgressBar + "%",
+                        }}
+                        aria-valuenow="0"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </>
+    );
+  };
+
+  return (
+    <>
+      <div className="dashbaord_white_card Progress_title_details_white">
+        <img className="drag_img" src={Drag} alt="drag.img" />
+        <div className="row">
+          <div className="col-12 ms-2">
+            <PageInnerTitle name="Projects" />
+          </div>
+        </div>
+        <div>
+          <table className="table project_tabel table-borderless text-capitalize">
+            <thead>
+              <tr className="project_list_title">
+                <th scope="col">Service Name</th>
+                <th scope="col">Status</th>
+                <th scope="col">Progress</th>
+              </tr>
+            </thead>
+            <tbody className="project_list_name_tr">
+              {ProjectListData.map((val, i) => {
+                return <ProjectListApp key={i} {...val} />;
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </>
+  );
+};
+const TeamStatus = () => {
+  const TasksData = [
+    {
+      Photo: Photo,
+      Today: "12",
+      Overdue: "00",
+      AllOpen: "12",
+    },
+    {
+      Photo: Photo,
+      Today: "12",
+      Overdue: "00",
+      AllOpen: "12",
+    },
+    {
+      Photo: Photo,
+      Today: "12",
+      Overdue: "00",
+      AllOpen: "12",
+    },
+    {
+      Photo: Photo,
+      Today: "12",
+      Overdue: "00",
+      AllOpen: "12",
+    },
+  ];
+  const TasksApp = (props) => {
+    return (
+      <TeamStatusTabelUi
+        Photo={props.Photo}
+        Today={props.Today}
+        Overdue={props.Overdue}
+        AllOpen={props.AllOpen}
+      />
+    );
+  };
+  const IssuesData = [
+    {
+      Photo: Photo2,
+      Today: "12",
+      Overdue: "00",
+      AllOpen: "12",
+    },
+    {
+      Photo: Photo2,
+      Today: "12",
+      Overdue: "00",
+      AllOpen: "12",
+    },
+    {
+      Photo: Photo2,
+      Today: "12",
+      Overdue: "00",
+      AllOpen: "12",
+    },
+    {
+      Photo: Photo2,
+      Today: "12",
+      Overdue: "00",
+      AllOpen: "12",
+    },
+  ];
+  const IssuesApp = (props) => {
+    return (
+      <>
+        <TeamStatusTabelUi
+          Photo={props.Photo}
+          Today={props.Today}
+          Overdue={props.Overdue}
+          AllOpen={props.AllOpen}
+        />
+      </>
+    );
+  };
+  const TeamStatusTabelUi = (props) => {
+    return (
+      <>
+        <div className="col-12">
+          <div className="row team_status_uper_div">
+            <div className="col-2">
+              <Stack direction="row" spacing={2}>
+                <Avatar
+                  alt="user"
+                  src={props.Photo}
+                  sx={{ width: 24, height: 24 }}
+                />
+              </Stack>
+            </div>
+            <div className="col-10">
+              <ul className="team_status_inner_title2">
+                <li>{props.Today}</li>
+                <li className="team_status_inner_color">{props.Overdue}</li>
+                <li>{props.AllOpen}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  };
+  return (
+    <>
+      <div className="dashbaord_white_card Progress_title_details_white">
+        <img className="drag_img" src={Drag} alt="drag.img" />
+        <div className="row">
+          <div className="col-12 ms-2">
+            <PageInnerTitle name="Team Status" />
+          </div>
+        </div>
+        <div className="row g-xxl-4 g-xl-4 g-lg-4 g-md-4 g-sm-3 g-3">
+          <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div className="row g-4">
+              <div className="col-12">
+                <div className="row">
+                  <div className="col-2"></div>
+                  <div className="col-10">
+                    <div className="team_status_title">
+                      <h3>tasks</h3>
+                    </div>
+                    <ul className="team_status_inner_title">
+                      <li>Today’s</li>
+                      <li className="team_status_inner_color">Overdue</li>
+                      <li>All Open</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              {TasksData.map((val, i) => {
+                return <TasksApp key={i} {...val} />;
+              })}
+            </div>
+          </div>
+          <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div className="row g-4">
+              <div className="col-12">
+                <div className="row">
+                  <div className="col-2"></div>
+                  <div className="col-10">
+                    <div className="team_status_title">
+                      <h3>Issues</h3>
+                    </div>
+                    <ul className="team_status_inner_title">
+                      <li>Today’s</li>
+                      <li className="team_status_inner_color">Overdue</li>
+                      <li>All Open</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              {IssuesData.map((val, i) => {
+                return <IssuesApp key={i} {...val} />;
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+const WeeklyDigest = () => {
+  return (
+    <>
+      <div className="dashbaord_white_card Progress_title_details_white">
+        <img className="drag_img" src={Drag} alt="drag.img" />
+        <div className="row">
+          <div className="col-12 ms-2">
+            <div className="weekly_digest_title">
+              <PageInnerTitle name="Weekly Digest" />
+              <p>From 04/12/2022 to 10/12/2022</p>
+              <img src={Down} alt="jfv" />
+              <select
+                className="form-select"
+                aria-label="Default select example"
+              >
+                <option defaultValue>Week 22</option>
+                <option value="1">Week 2</option>
+                <option value="2">Week 21</option>
+                <option value="3">Week 20</option>
+              </select>
+            </div>
+          </div>
+          <div className="col-12">
+            <WeeklyDigestChart />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+const WeeklyDigestChart = () => {
+  const [state] = useState({
+    series: [
+      {
+        name: "sales",
+        data: [
+          {
+            x: "2019/01/01",
+            y: 400,
+          },
+          {
+            x: "2019/01/01",
+            y: 500,
+          },
+          {
+            x: "2019/01/01",
+            y: 400,
+          },
+          {
+            x: "2019/01/01",
+            y: 500,
+          },
+          {
+            x: "2019/01/01",
+            y: 400,
+          },
+          {
+            x: "2019/01/01",
+            y: 500,
+          },
+          {
+            x: "2019/01/01",
+            y: 400,
+          },
+        ],
+      },
+    ],
+    options: {
+      chart: {
+        type: "bar",
+        stacked: false,
+        toolbar: {
+          show: false,
+        },
+      },
+      dataLabels: {
+        enabled: false,
+      },
+      xaxis: {
+        categories: ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"],
+      },
+      legend: {
+        show: false,
+      },
+      bar: {
+        barWidth: "10%",
+      },
+    },
+  });
+  return (
+    <>
+      <div id="chart">
+        <ReactApexChart
+          options={state.options}
+          series={state.series}
+          type="bar"
+          height={250}
+        />
+      </div>
+    </>
+  );
+};
+const ProjectCostChart = () => {
+  const [state] = useState({
+    series: [
+      {
+        name: "Overtime",
+        data: [50, 90, 71, 10, 11, 19, 15],
+      },
+      {
+        name: "Working Time",
+        data: [20, 29, 37, 36, 44, 45, 70],
+      },
+    ],
+    options: {
+      colors: ["#4318FF", "#6AD2FF"],
+      chart: {
+        type: "line",
+        stacked: false,
+        toolbar: {
+          show: false,
+        },
+      },
+      dataLabels: {
+        enabled: false,
+      },
+      xaxis: {
+        categories: ["SEP", "OCT", "NOV", "DEC", "JAN", "FEB"],
+      },
+      legend: {
+        show: false,
+      },
+      bar: {
+        barWidth: "10%",
+      },
+    },
+  });
+
+  return (
+    <>
+      <div className="dashbaord_white_card Progress_title_details_white">
+        <img className="drag_img" src={Drag} alt="drag.img" />
+        <div className="row">
+          <div className="col-12 ms-2">
+            <PageInnerTitle name="Team Status" />
+          </div>
+        </div>
+        <div id="chart">
+          <ReactApexChart
+            options={state.options}
+            series={state.series}
+            type="line"
+            height={250}
+          />
+        </div>
+      </div>
+    </>
+  );
+};
+const TaskStatusChart = (props) => {
+  return (
+    <>
+      <div className="dashbaord_white_card Progress_title_details_white">
+        <img className="drag_img" src={Drag} alt="drag.img" />
+        <div className="row">
+          <div className="col-12 ms-2">
+            <PageInnerTitle name={props.title} />
+          </div>
+        </div>
+        <div id="chart">
+          <ReactApexChart {...props.data} type="pie" height={250} />
+        </div>
+      </div>
+    </>
+  );
+};
+// Project Dashboard end
+const TabsMenu = () => {
+  const navigate = useNavigate();
+  return (
+    <>
+      <div className="chat_div_dropdown chat_div_dropdown_right">
+        <ButtonToolbar>
+          <Dropdown
+            title={<BiDotsHorizontalRounded />}
+            activeKey="e-2 "
+            placement="leftStart"
+          >
+            <Dropdown.Item
+              onClick={() => navigate("/")}
+              className="chat_div_dropdown_inner"
+              eventKey="a"
+            >
+              Edit Project
+            </Dropdown.Item>
+            <Dropdown.Item className="chat_div_dropdown_inner" eventKey="b">
+              Delete Project
+            </Dropdown.Item>
+            <Dropdown.Item className="chat_div_dropdown_inner" eventKey="c">
+              View My Tasks
+            </Dropdown.Item>
+            <CustomDropdown title="Click" trigger="click" placement="topEnd" />
+          </Dropdown>
+        </ButtonToolbar>
+      </div>
+      {/* <CustomDropdown title="Click" trigger="click" placement="topEnd" /> */}
+    </>
+  );
+};
+const CustomDropdown = ({ ...props }) => {
+  const InnerItemData = [
+    {
+      InnerItemName: "Progress",
+    },
+    {
+      InnerItemName: "Task Status",
+    },
+    {
+      InnerItemName: "Team Status",
+    },
+    {
+      InnerItemName: "Issue Status",
+    },
+    {
+      InnerItemName: "Weekly Digest",
+    },
+    {
+      InnerItemName: "Milestone Status",
+    },
+    {
+      InnerItemName: "Project Cost",
+    },
+    {
+      InnerItemName: "Bugs/Issues",
+    },
+  ];
+  const InnerItemApp = (props) => {
+    const [state, setState] = React.useState({
+      gilad: false,
+      jason: false,
+      antoine: false,
+    });
+
+    const handleChange = (event) => {
+      setState({
+        ...state,
+        [event.target.name]: event.target.checked,
+      });
+    };
+    return (
+      <Dropdown.Item className="Dashboard_menu_right_innwr_item">
+        <FormGroup>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={state.gilad}
+                onChange={handleChange}
+                name="gilad"
+                size="small"
+                color="warning"
+              />
+            }
+            label={props.InnerItemName}
+          />
+        </FormGroup>
+      </Dropdown.Item>
+    );
+  };
+  return (
+    <div className="Dashboard_menu_right_innwr">
+      <Dropdown {...props}>
+        {InnerItemData.map((val, i) => {
+          return <InnerItemApp key={i} {...val} />;
+        })}
+      </Dropdown>
+    </div>
+  );
+};

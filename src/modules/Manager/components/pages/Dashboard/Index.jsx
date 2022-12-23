@@ -12,6 +12,7 @@ import { useState } from "react";
 import Calendar from "react-calendar";
 import { useNavigate } from "react-router-dom";
 import { GoPrimitiveDot } from "react-icons/go";
+
 // mui
 import { ExistingClientModal } from "./ExistingClientModal";
 export const Index = () => {

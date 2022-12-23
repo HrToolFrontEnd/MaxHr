@@ -288,8 +288,12 @@ const MessigeChatUi = (props) => {
                                     </div>
                                   </div>
                                 </div>
+                                <div className="mes_reax">
+                                  😀 <span>1</span>
+                                </div>
                               </div>
                             </div>
+
                             <div className="col-12">
                               <div className="li_left_chat_div">
                                 <div className="left_chat_div_inner">
@@ -316,6 +320,9 @@ const MessigeChatUi = (props) => {
                                       </div>
                                     </div>
                                   </div>
+                                </div>
+                                <div className="mes_reax">
+                                  😍 <span>5</span>
                                 </div>
                               </div>
                             </div>
@@ -360,6 +367,9 @@ const MessigeChatUi = (props) => {
                                       </div>
                                     </div>
                                   </div>
+                                  <div className=" mes_reax2">
+                                    😍 <span>5</span>
+                                  </div>
                                 </div>
                               </div>
                               <div className="col-12 col_div_inner">
@@ -401,6 +411,9 @@ const MessigeChatUi = (props) => {
                                         <LongMenuRight />
                                       </div>
                                     </div>
+                                  </div>
+                                  <div className=" mes_reax2">
+                                    😍 <span>5</span>
                                   </div>
                                 </div>
                               </div>

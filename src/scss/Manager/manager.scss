@@ -648,7 +648,44 @@
     color: black;
   }
 }
+.Dashboard_menu_right {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  .chat_div_dropdown .rs-dropdown-toggle,
+  .chat_div_dropdown .rs-dropdown-toggle.rs-btn {
+    svg {
+      font-size: 30px;
+    }
+  }
+}
+.Dashboard_menu_right_innwr {
+  .rs-dropdown .rs-dropdown-menu {
+    width: 15rem;
+  }
+  .css-ars20s-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked {
+    color: #219b0d;
+  }
+  label {
+    padding: 8px 12px;
+    span {
+      font-size: 13px;
+      font-weight: 600 !important;
+      padding-left: 10px;
+    }
+  }
+}
+.Dashboard_menu_right_innwr_item {
+  position: relative;
+  padding: 0 !important;
+  .MuiSwitch-root {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+  }
+}
 .project_list_tabs_main_div {
+  position: relative;
   .nav-pills .nav-link.active,
   .nav-pills .show > .nav-link {
     color: black;
@@ -1523,6 +1560,7 @@
     li {
       display: flex;
       align-items: flex-start;
+      margin-bottom: 0px;
     }
     .li_left_chat_div {
       background-color: #e8ffe9;
@@ -1531,6 +1569,7 @@
       border-radius: 6px;
       position: relative;
       transition: all 0.3s;
+      margin-top: 10px;
       &:hover {
         .option_chat {
           display: block;
@@ -1615,6 +1654,7 @@
     padding: 10px;
     border-radius: 6px;
     position: relative;
+    margin-top: 10px;
   }
   ul {
     margin: 0;
@@ -1752,4 +1792,128 @@
     }
   }
 }
+.mes_reax {
+  background-color: white;
+  position: absolute;
+  padding: 1px 5px;
+  font-size: 12px;
+  border-radius: 25px;
+  bottom: -12px;
+  right: -10px;
+  span {
+    font-weight: 600;
+    margin-left: 5px;
+  }
+}
+.mes_reax2 {
+  left: -10px;
+  background-color: white;
+  position: absolute;
+  padding: 1px 5px;
+  font-size: 12px;
+  border-radius: 25px;
+  bottom: -12px;
+  span {
+    font-weight: 600;
+    margin-left: 5px;
+  }
+}
 // chat end
+// Projects
+.Progress_title_details {
+  text-align: end;
+  margin-bottom: 2px;
+  font-weight: 600;
+  font-size: 12px;
+}
+.Progress_title_details_midel {
+  color: #eb703b;
+}
+.Progress_title_details_top {
+  margin-top: -11px;
+}
+
+.Progress_title_details_white {
+  height: 20.3rem;
+  position: relative;
+  padding: 20px;
+  padding-left: 30px;
+}
+.drag_img {
+  position: absolute;
+  top: 21px;
+  left: 8px;
+  width: 22px;
+  cursor: pointer;
+}
+.team_status_title {
+  text-align: center;
+  h3 {
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: capitalize;
+  }
+}
+
+.team_status_inner_title {
+  margin-bottom: 0;
+  display: flex;
+  li {
+    margin: auto;
+    font-weight: 500;
+    font-size: 12px;
+  }
+}
+.team_status_inner_title2 {
+  margin-bottom: 0;
+  display: flex;
+  li {
+    margin: auto;
+    font-weight: 700;
+    font-size: 14px;
+    margin-right: 45px;
+  }
+}
+.team_status_inner_color {
+  color: #f02934;
+}
+
+.team_status_uper_div {
+  display: flex;
+  align-items: center;
+}
+.weekly_digest_title {
+  position: relative;
+  img {
+    position: absolute;
+    top: 13px;
+    left: 12.3rem;
+    z-index: 1;
+  }
+  .form-select:focus {
+    box-shadow: unset;
+  }
+  select {
+    border: none;
+    position: absolute;
+    top: 6px;
+    width: 4rem;
+    font-size: 12px;
+    font-weight: 500;
+    left: 146px;
+    padding: 0;
+    background-image: none;
+    color: #1a7fdd !important;
+  }
+  h3 {
+    margin-bottom: 5px;
+  }
+  p {
+    margin-bottom: 0;
+    font-weight: 400;
+    font-size: 13px;
+    text-transform: capitalize;
+    color: #525252;
+  }
+}
+// Projects end

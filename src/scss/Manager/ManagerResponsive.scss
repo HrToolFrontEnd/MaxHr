@@ -1,6 +1,26 @@
 @import "../--mixing.scss";
 @import "../--var.scss";
 @media (max-width: 576px) {
+  .Progress_title_details_white {
+    height: auto;
+  }
+  .team_status_inner_title2 {
+    li {
+      margin-right: 40px;
+    }
+  }
+  .project_details_card_box {
+    span {
+      font-size: 11px;
+    }
+  }
+  .Progress_title_details_top {
+    position: relative;
+  }
+  .Progress_title_details {
+    position: absolute;
+    bottom: -33px;
+  }
   .avatar_inner_div {
     margin-top: 10px;
     justify-content: center;

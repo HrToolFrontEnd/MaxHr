@@ -12,7 +12,7 @@ import { GrAttachment } from "react-icons/gr";
 import { IoChatbubblesOutline } from "react-icons/io5";
 import { ImHeadphones } from "react-icons/im";
 import React from "react";
-import { BiEdit, BiDotsHorizontalRounded } from "react-icons/bi";
+import { BiEdit, BiDotsHorizontalRounded, BiTask } from "react-icons/bi";
 import { BsUpload } from "react-icons/bs";
 import PdfIcon from "../../../../../../pics/Manager/pdf.png";
 import { useState } from "react";
@@ -21,7 +21,8 @@ import Drag from "../../../../../../pics/Manager/drag.png";
 import Down from "../../../../../../pics/Manager/down.png";
 import ReactApexChart from "react-apexcharts";
 import { Dropdown, ButtonToolbar } from "rsuite";
-
+import { MdOutlineWidgets } from "react-icons/md";
+import { AiOutlineDelete } from "react-icons/ai";
 // mui
 import { CircularStatic } from "./CircularStatic";
 import Pagination from "@mui/material/Pagination";
@@ -37,6 +38,11 @@ import { Chat } from "../../chat/Chat";
 import Switch from "@mui/material/Switch";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 // img link
 let Photo = "https://source.unsplash.com/random/500x500/?girl";
 let Photo2 = "https://source.unsplash.com/random/500x500/?girl,face";
@@ -252,7 +258,7 @@ const MyTab = () => {
     <>
       <div className="project_list_tabs_main_div">
         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-          <div className=" mb-4">
+          <div className="project_tab_mb">
             <Nav variant="pills" className="flex">
               <Nav.Item>
                 <Nav.Link eventKey="first">Project Dashboard</Nav.Link>
@@ -275,20 +281,32 @@ const MyTab = () => {
           <Tab.Content>
             <Tab.Pane eventKey="first">
               <div className="Dashboard_menu_right">
-                <TabsMenu />
+                <TabsMenu WidgetsControl={<WidgetsControl />} />
               </div>
               <ProjectDashboard />
             </Tab.Pane>
             <Tab.Pane eventKey="Overview">
+              <div className="Dashboard_menu_right">
+                <TabsMenu />
+              </div>
               <Overview />
             </Tab.Pane>
             <Tab.Pane eventKey="Team">
+              <div className="Dashboard_menu_right">
+                <TabsMenu />
+              </div>
               <TeamWorkProgress />
             </Tab.Pane>
             <Tab.Pane eventKey="Chats">
+              <div className="Dashboard_menu_right">
+                <TabsMenu />
+              </div>
               <Chat />
             </Tab.Pane>
             <Tab.Pane eventKey="Meetings">
+              <div className="Dashboard_menu_right">
+                <TabsMenu />
+              </div>
               <Meetings />
             </Tab.Pane>
           </Tab.Content>
@@ -1584,8 +1602,43 @@ const TaskStatusChart = (props) => {
   );
 };
 // Project Dashboard end
-const TabsMenu = () => {
+// Widgets Control
+const TabsMenu = (props) => {
+  const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const DraggableDialog = () => {
+    return (
+      <>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="draggable-dialog-title"
+        >
+          <DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
+            Subscribe
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              To subscribe to this website, please enter your email address
+              here. We will send updates occasionally.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <span autoFocus onClick={handleClose}>
+              Cancel
+            </span>
+            <span onClick={handleClose}>Subscribe</span>
+          </DialogActions>
+        </Dialog>
+      </>
+    );
+  };
   return (
     <>
       <div className="chat_div_dropdown chat_div_dropdown_right">
@@ -1596,92 +1649,129 @@ const TabsMenu = () => {
             placement="leftStart"
           >
             <Dropdown.Item
-              onClick={() => navigate("/")}
+              onClick={handleClickOpen}
               className="chat_div_dropdown_inner"
               eventKey="a"
             >
               Edit Project
+              <span>
+                <BiEdit />
+              </span>
             </Dropdown.Item>
-            <Dropdown.Item className="chat_div_dropdown_inner" eventKey="b">
-              Delete Project
-            </Dropdown.Item>
-            <Dropdown.Item className="chat_div_dropdown_inner" eventKey="c">
+            <Dropdown.Item
+              onClick={() => navigate("/")}
+              className="chat_div_dropdown_inner"
+              eventKey="c"
+            >
               View My Tasks
+              <span>
+                <BiTask />
+              </span>
             </Dropdown.Item>
-            <CustomDropdown title="Click" trigger="click" placement="topEnd" />
+            <Dropdown.Item
+              onClick={handleClickOpen}
+              className="chat_div_dropdown_inner"
+              eventKey="b"
+            >
+              Delete Project
+              <span>
+                <AiOutlineDelete />
+              </span>
+            </Dropdown.Item>
+            <span>{props.WidgetsControl}</span>
           </Dropdown>
         </ButtonToolbar>
       </div>
-      {/* <CustomDropdown title="Click" trigger="click" placement="topEnd" /> */}
+      <DraggableDialog />
     </>
   );
 };
-const CustomDropdown = ({ ...props }) => {
-  const InnerItemData = [
-    {
-      InnerItemName: "Progress",
-    },
-    {
-      InnerItemName: "Task Status",
-    },
-    {
-      InnerItemName: "Team Status",
-    },
-    {
-      InnerItemName: "Issue Status",
-    },
-    {
-      InnerItemName: "Weekly Digest",
-    },
-    {
-      InnerItemName: "Milestone Status",
-    },
-    {
-      InnerItemName: "Project Cost",
-    },
-    {
-      InnerItemName: "Bugs/Issues",
-    },
-  ];
-  const InnerItemApp = (props) => {
-    const [state, setState] = React.useState({
-      gilad: false,
-      jason: false,
-      antoine: false,
-    });
-
-    const handleChange = (event) => {
-      setState({
-        ...state,
-        [event.target.name]: event.target.checked,
+const WidgetsControl = () => {
+  const CustomDropdownInner = () => (
+    <div className="custom_dropdown_inner">
+      Widgets Control
+      <span>
+        <MdOutlineWidgets />
+      </span>
+    </div>
+  );
+  const CustomDropdown = ({ ...props }) => {
+    const InnerItemData = [
+      {
+        InnerItemName: "Progress",
+      },
+      {
+        InnerItemName: "Task Status",
+      },
+      {
+        InnerItemName: "Team Status",
+      },
+      {
+        InnerItemName: "Issue Status",
+      },
+      {
+        InnerItemName: "Weekly Digest",
+      },
+      {
+        InnerItemName: "Milestone Status",
+      },
+      {
+        InnerItemName: "Project Cost",
+      },
+      {
+        InnerItemName: "Bugs/Issues",
+      },
+    ];
+    const InnerItemApp = (props) => {
+      const [state, setState] = React.useState({
+        gilad: false,
+        jason: false,
+        antoine: false,
       });
+
+      const handleChange = (event) => {
+        setState({
+          ...state,
+          [event.target.name]: event.target.checked,
+        });
+      };
+      return (
+        <Dropdown.Item className="Dashboard_menu_right_innwr_item">
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={state.gilad}
+                  onChange={handleChange}
+                  name="gilad"
+                  size="small"
+                  color="warning"
+                />
+              }
+              label={props.InnerItemName}
+            />
+          </FormGroup>
+        </Dropdown.Item>
+      );
     };
     return (
-      <Dropdown.Item className="Dashboard_menu_right_innwr_item">
-        <FormGroup>
-          <FormControlLabel
-            control={
-              <Switch
-                checked={state.gilad}
-                onChange={handleChange}
-                name="gilad"
-                size="small"
-                color="warning"
-              />
-            }
-            label={props.InnerItemName}
-          />
-        </FormGroup>
-      </Dropdown.Item>
+      <div className="Dashboard_menu_right_innwr">
+        <Dropdown {...props}>
+          {InnerItemData.map((val, i) => {
+            return <InnerItemApp key={i} {...val} />;
+          })}
+        </Dropdown>
+      </div>
     );
   };
   return (
-    <div className="Dashboard_menu_right_innwr">
-      <Dropdown {...props}>
-        {InnerItemData.map((val, i) => {
-          return <InnerItemApp key={i} {...val} />;
-        })}
-      </Dropdown>
+    <div className="custom_dropdown_last">
+      <CustomDropdown
+        title={<CustomDropdownInner />}
+        trigger="click"
+        placement="topEnd"
+      />
     </div>
   );
 };
+// Widgets Control end

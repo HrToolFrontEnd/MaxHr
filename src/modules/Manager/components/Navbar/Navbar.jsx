@@ -15,6 +15,7 @@ import Input from "../../../common/components/input/Input";
 import { useState } from "react";
 import D1 from "../../../../pics/Manager/1.png";
 import D2 from "../../../../pics/Manager/2.png";
+import Tasks from "../../../../pics/Manager/Tasks.png";
 
 const NavUrl = ({ url, icon, description, navItems }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(true);
@@ -130,6 +131,11 @@ const Navbar = () => {
               url="/manager/project_list"
               icon={<NavImg img={D2} />}
               description="Projects"
+            />
+            <NavUrl
+              url="/manager/tasks"
+              icon={<NavImg img={Tasks} />}
+              description="Tasks"
             />
 
             {/* <NavUrl

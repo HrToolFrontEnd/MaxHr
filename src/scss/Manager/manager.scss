@@ -1916,4 +1916,71 @@
     color: #525252;
   }
 }
+.custom_dropdown_last {
+  .rs-dropdown {
+    width: 100%;
+    height: 100%;
+    button {
+      width: 100%;
+      height: 100%;
+      font-size: 12px;
+      font-weight: 600;
+      color: black;
+      text-align: left;
+      padding-left: 10px !important;
+      margin-top: -6px;
+      transition: all 0.3s;
+      border-radius: 0;
+      padding-bottom: 5px !important;
+      padding-top: 5px !important;
+      margin-top: 0px;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      &:hover {
+        background-color: #e5f3ff;
+      }
+    }
+  }
+}
+.custom_dropdown_inner {
+  span {
+    float: right;
+    padding-right: 10px;
+    svg {
+      font-size: 18px !important;
+    }
+  }
+}
+.project_tab_mb {
+  margin-bottom: 1.5rem;
+}
+.header_my {
+  margin-bottom: 1.5rem;
+  align-items: center;
+  .page_All_top_title {
+    margin-bottom: 0;
+    h3 {
+      margin-bottom: 0;
+    }
+  }
+  .header_btn {
+    text-align: end;
+  }
+}
+.header_input_div {
+  position: relative;
+  input {
+    color: #949494;
+    border: none;
+    font-weight: 400;
+    font-size: 14px;
+  }
+  svg {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-size: 18px;
+    color: #949494;
+  }
+}
 // Projects end

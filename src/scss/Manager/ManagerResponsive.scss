@@ -1,6 +1,27 @@
 @import "../--mixing.scss";
 @import "../--var.scss";
 @media (max-width: 576px) {
+  .header_my {
+    .header_btn {
+      text-align: start;
+    }
+  }
+  .project_tab_mb {
+    margin-bottom: 3rem;
+  }
+  .Dashboard_menu_right {
+    position: absolute;
+    top: 48px;
+    right: 1px;
+    background-color: white;
+    border-radius: 3px;
+    padding: 3px 10px;
+    .chat_div_dropdown .rs-dropdown-toggle svg,
+    .Dashboard_menu_right .chat_div_dropdown .rs-dropdown-toggle.rs-btn svg {
+      transform: rotate(90deg);
+      font-size: 23px !important;
+    }
+  }
   .Progress_title_details_white {
     height: auto;
   }
@@ -336,6 +357,21 @@
   }
 }
 @media (min-width: 768px) {
+  .Dashboard_menu_right {
+    position: absolute;
+    top: 46px;
+    right: 1px;
+    background-color: white;
+    border-radius: 3px;
+    padding: 3px 10px;
+    .chat_div_dropdown .rs-dropdown-toggle svg,
+    .Dashboard_menu_right .chat_div_dropdown .rs-dropdown-toggle.rs-btn svg {
+      transform: rotate(0deg);
+    }
+  }
+  .project_tab_mb {
+    margin-bottom: 3rem;
+  }
   .avatar_inner_div {
     margin-top: 10px;
   }
@@ -387,7 +423,7 @@
     }
   }
   .project_list_tabs_inner_btn {
-    top: -55px;
+    top: -60px;
   }
   .project_list_tabs_main_div {
     .nav-pills .nav-link {
@@ -405,6 +441,17 @@
   }
 }
 @media (min-width: 1024px) {
+  .Dashboard_menu_right {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0;
+  }
+  .project_tab_mb {
+    margin-bottom: 1.5rem;
+  }
   .avatar_inner_div {
     margin-top: 0;
   }

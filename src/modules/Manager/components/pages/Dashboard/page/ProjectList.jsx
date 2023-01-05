@@ -1,6 +1,8 @@
 import { Nav, Tab } from "react-bootstrap";
 import { OutlineBtnWithIcon } from "../../../../../common/ManagerComponents/Btn/Btn";
 import { FaFilter } from "react-icons/fa";
+import { IoSearchOutline } from "react-icons/io5";
+
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { PageAllTopTitle } from "../../../../../common/ManagerComponents/PageAllTopTitle";
 // mui
@@ -11,11 +13,31 @@ import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import { ExistingClientModal } from "../ExistingClientModal";
 export const ProjectList = () => {
   return (
     <>
       <div className="custom_container">
-        <PageAllTopTitle title="Project" />
+        <div className="row g-3 header_my">
+          <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-1 col-sm-12 col-12 order-md-1 order-2">
+            <PageAllTopTitle title="Project" />
+          </div>
+          <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-5 col-sm-12 col-12 order-md-2 order-1">
+            <div className="header_input_div">
+              <IoSearchOutline />
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Search by Project Name"
+              />
+            </div>
+          </div>
+          <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-3 col-sm-12 col-12 header_btn order-md-3 order-3">
+            <div>
+              <ExistingClientModal />
+            </div>
+          </div>
+        </div>
         <div className="project_list_tabs_main_div">
           <Tab.Container id="left-tabs-example" defaultActiveKey="first">
             <div className="project_list_tabs_inner_div">

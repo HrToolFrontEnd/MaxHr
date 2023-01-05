@@ -1,9 +1,45 @@
 @import "../--mixing.scss";
 @import "../--var.scss";
 @media (max-width: 576px) {
+  .classic_view_inner_body {
+    padding: 0px 10px 10px 10px !important;
+  }
+  .classic_view_outer {
+    .classic_view_outer_body {
+      padding: 0px;
+    }
+  }
+  .view_change_main_div {
+    .css-1s2u09g-control {
+      min-height: 37px;
+    }
+  }
+  .view_change_label {
+    span {
+      display: none;
+    }
+  }
+  .view_change_main_div {
+    top: -55px;
+    right: 48px;
+  }
+  .project_list_tabs_inner_btn {
+    .manager_btn_outline_with_icon {
+      padding: 10px 10px;
+      span {
+        display: none;
+      }
+      svg {
+        font-size: 15px;
+      }
+    }
+  }
   .header_my {
     .header_btn {
       text-align: start;
+      .manager_btn_full2 {
+        width: 50%;
+      }
     }
   }
   .project_tab_mb {
@@ -357,6 +393,38 @@
   }
 }
 @media (min-width: 768px) {
+  .view_change_main_div {
+    .css-1s2u09g-control {
+      min-height: 37px;
+    }
+  }
+  .view_change_label {
+    span {
+      display: none;
+    }
+  }
+  .view_change_main_div {
+    top: -60px;
+    right: 48px;
+  }
+  .project_list_tabs_inner_btn {
+    .manager_btn_outline_with_icon {
+      padding: 10px 10px;
+      span {
+        display: none;
+      }
+      svg {
+        font-size: 15px;
+      }
+    }
+  }
+  .header_my {
+    .header_btn {
+      .manager_btn_full2 {
+        width: 70%;
+      }
+    }
+  }
   .Dashboard_menu_right {
     position: absolute;
     top: 46px;
@@ -441,6 +509,38 @@
   }
 }
 @media (min-width: 1024px) {
+  .view_change_main_div {
+    .css-1s2u09g-control {
+      min-height: 42px;
+    }
+  }
+  .view_change_label {
+    span {
+      display: block;
+    }
+  }
+  .view_change_main_div {
+    top: 0;
+    right: 136px;
+  }
+  .project_list_tabs_inner_btn {
+    .manager_btn_outline_with_icon {
+      padding: 10px 20px;
+      span {
+        display: block;
+      }
+      svg {
+        font-size: 20px;
+      }
+    }
+  }
+  .header_my {
+    .header_btn {
+      .manager_btn_full2 {
+        width: 50%;
+      }
+    }
+  }
   .Dashboard_menu_right {
     position: absolute;
     top: 0;
@@ -521,6 +621,13 @@
   }
 }
 @media (min-width: 1440px) {
+  .header_my {
+    .header_btn {
+      .manager_btn_full2 {
+        width: 35%;
+      }
+    }
+  }
   .circular_static_div_text {
     margin: 0 20px;
   }

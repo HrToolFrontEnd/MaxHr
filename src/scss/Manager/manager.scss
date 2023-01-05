@@ -1965,6 +1965,9 @@
   }
   .header_btn {
     text-align: end;
+    .manager_btn_full2 {
+      width: 35%;
+    }
   }
 }
 .header_input_div {
@@ -1984,3 +1987,133 @@
   }
 }
 // Projects end
+// Tasks
+.view_change_label {
+  display: flex;
+  align-items: center;
+  span {
+    margin-left: 5px;
+  }
+}
+.view_change_main_div {
+  position: absolute;
+  top: 0;
+  right: 136px;
+  .css-b62m3t-container {
+    outline: none;
+  }
+  .css-1s2u09g-control {
+    border: none;
+    box-shadow: none;
+    min-height: 42px;
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover {
+      box-shadow: 0px 0px 12px rgb(81 67 239 / 50%);
+    }
+  }
+  .css-1pahdxg-control {
+    border: none;
+    box-shadow: none;
+  }
+  .css-1okebmr-indicatorSeparator {
+    display: none;
+  }
+  // .css-319lph-ValueContainer {
+  //   padding-right: 0;
+  // }
+  .css-tlfecz-indicatorContainer {
+    padding-left: 0;
+  }
+  .css-1gtu0rj-indicatorContainer {
+    padding-left: 0;
+  }
+}
+.classic_view_outer {
+  .accordion-button {
+    // padding: 0;
+    font-weight: 600;
+    font-size: 20px;
+    cursor: pointer;
+    text-transform: capitalize;
+    background-color: transparent;
+    color: black;
+    padding: 10px;
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  .accordion-item {
+    background-color: #f0eaea;
+    border: none;
+  }
+  .accordion-button:not(.collapsed) {
+    color: #1a7fdd;
+    background-color: transparent;
+    box-shadow: none;
+  }
+  .accordion-button:not(.collapsed)::after {
+    background-image: url(../../pics/Manager/outer.png);
+    transform: rotate(-180deg);
+    @include bg_img;
+    background-size: auto;
+  }
+  .accordion-button::after {
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-left: auto;
+    content: "";
+    background-image: url(../../pics/Manager/outer.png);
+    @include bg_img;
+    background-size: auto;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .classic_view_outer_body {
+    padding: 10px;
+    .accordion-button {
+      // padding: 0;
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+      color: #818181;
+      span {
+        padding-left: 25px;
+      }
+    }
+    .accordion-button:not(.collapsed) {
+      color: #ff3e48;
+    }
+    .accordion-item {
+      bottom: 0;
+      background-color: transparent;
+    }
+    .accordion-button::after {
+      background-image: url(../../pics/Manager/Vector2.png);
+      @include bg_img;
+      background-size: auto;
+      position: absolute;
+    }
+    .accordion-button:not(.collapsed)::after {
+      background-image: url(../../pics/Manager/Vector2.png);
+    }
+  }
+}
+.classic_view_tabel_heder {
+  button {
+    padding: 0 !important;
+  }
+}
+.classic_view_inner_header {
+  button {
+    padding-top: 0 !important;
+  }
+}
+.classic_view_inner_body {
+  padding: 0px 15px 15px 15px !important;
+}
+.classic_view_tabel_body {
+  padding: 8px 5px 8px 5px !important;
+}
+// Tasks end

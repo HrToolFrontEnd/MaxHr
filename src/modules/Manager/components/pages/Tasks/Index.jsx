@@ -7,7 +7,11 @@ import { IoSearchOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
-
+import Accordion from "react-bootstrap/Accordion";
+import Select from "react-select";
+import { AiOutlineUnorderedList } from "react-icons/ai";
+import { VscListSelection } from "react-icons/vsc";
+import { useState } from "react";
 // mui
 import * as React from "react";
 import Avatar from "@mui/material/Avatar";
@@ -19,6 +23,26 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 // tabs
 export const TasksList = () => {
+  const [viewType, setViewType] = useState("plain");
+  const ViewChangeLabel = (props) => {
+    return (
+      <div className="view_change_label">
+        {props.icon} <span>{props.title}</span>
+      </div>
+    );
+  };
+  const ViewChange = [
+    {
+      value: "plain",
+      label: (
+        <ViewChangeLabel title="Plain" icon={<AiOutlineUnorderedList />} />
+      ),
+    },
+    {
+      value: "classic",
+      label: <ViewChangeLabel title="classic" icon={<VscListSelection />} />,
+    },
+  ];
   return (
     <>
       <div>
@@ -51,9 +75,6 @@ export const TasksList = () => {
                     <Nav.Link eventKey="first">All Tasks</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link eventKey="Classic">Classic</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
                     <Nav.Link eventKey="Completed">Completed</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
@@ -67,6 +88,16 @@ export const TasksList = () => {
                   </Nav.Item>
                 </Nav>
               </div>
+              <div className="view_change_main_div">
+                <Select
+                  options={ViewChange}
+                  defaultValue={ViewChange[0]}
+                  isSearchable={false}
+                  onChange={({ value }) => {
+                    setViewType(value);
+                  }}
+                />
+              </div>
               <div className="project_list_tabs_inner_btn">
                 <OutlineBtnWithIcon name="All Filters" icon={<FaFilter />} />
               </div>
@@ -74,13 +105,25 @@ export const TasksList = () => {
 
             <Tab.Content>
               <Tab.Pane eventKey="first">
+                {
+                  {
+                    classic: <ClassicView />,
+                    plain: <AllTasksList />,
+                  }[viewType]
+                }
+              </Tab.Pane>
+              <Tab.Pane eventKey="Completed">
                 <AllTasksList />
               </Tab.Pane>
-              <Tab.Pane eventKey="Classic">2</Tab.Pane>
-              <Tab.Pane eventKey="Completed">3</Tab.Pane>
-              <Tab.Pane eventKey="OnTrack">4</Tab.Pane>
-              <Tab.Pane eventKey="Delayed">5</Tab.Pane>
-              <Tab.Pane eventKey="OnHold">6</Tab.Pane>
+              <Tab.Pane eventKey="OnTrack">
+                <AllTasksList />
+              </Tab.Pane>
+              <Tab.Pane eventKey="Delayed">
+                <AllTasksList />
+              </Tab.Pane>
+              <Tab.Pane eventKey="OnHold">
+                <AllTasksList />
+              </Tab.Pane>
             </Tab.Content>
           </Tab.Container>
         </div>
@@ -94,7 +137,76 @@ const AllTasksList = () => {
   const ProjectListData = [
     {
       TaskTitle: "Merchant Offers Discussion",
-      Priority: "High ",
+      Priority: "High",
+      PrioritybackgroundColor: "#FF3E48",
+      Status: "On Track",
+      ProjectName: "Luno Electrical Website Design",
+      date: "29-10-2022",
+      link: "/",
+      cat1: [
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,new",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,two",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?women",
+        },
+      ],
+    },
+    {
+      TaskTitle: "Merchant Offers Discussion",
+      Priority: "High",
+      PrioritybackgroundColor: "#FF3E48",
+      Status: "On Track",
+      ProjectName: "Luno Electrical Website Design",
+      date: "29-10-2022",
+      link: "/",
+      cat1: [
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,new",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,two",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?women",
+        },
+      ],
+    },
+    {
+      TaskTitle: "Merchant Offers Discussion",
+      Priority: "High",
+      PrioritybackgroundColor: "#FF3E48",
+      Status: "On Track",
+      ProjectName: "Luno Electrical Website Design",
+      date: "29-10-2022",
+      link: "/",
+      cat1: [
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,new",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,two",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?women",
+        },
+      ],
+    },
+    {
+      TaskTitle: "Merchant Offers Discussion",
+      Priority: "High",
       PrioritybackgroundColor: "#FF3E48",
       Status: "On Track",
       ProjectName: "Luno Electrical Website Design",
@@ -239,7 +351,6 @@ const AllTasksList = () => {
       </>
     );
   };
-
   return (
     <>
       <div className="dashbaord_white_card ">
@@ -254,10 +365,8 @@ const AllTasksList = () => {
                 <th scope="col">Priority</th>
                 <th scope="col">Status</th>
                 <th scope="col">Project Name</th>
-
                 <th scope="col">Assignee</th>
                 <th scope="col">Due Date</th>
-
                 <th scope="col">action</th>
               </tr>
             </thead>
@@ -278,3 +387,608 @@ const AllTasksList = () => {
   );
 };
 // All Tasks list end
+// Classic view
+
+export const ClassicView = () => {
+  const ClassicViewData = [
+    {
+      projectName: "max mover",
+      projectKey: "0",
+      DepartmentCategory: [
+        {
+          departmentName: "react js Development",
+          departmentKey: "0",
+          TasksCategory: [
+            {
+              tasksName: "Research",
+              tasksKey: "0",
+              TasksTabel: [
+                {
+                  RefID: "Ref012",
+                  tasksName: "Luno Electrical Website design",
+                  PrioritybackgroundColor: "#FF3E48",
+                  PriorityName: "high",
+                  Status: "TBA",
+                  ProgressBar: "50",
+                  date: "29-10-2022",
+                  labelRowImgData: [
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?girl",
+                    },
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?face",
+                    },
+                  ],
+                },
+                {
+                  RefID: "Ref012",
+                  tasksName: "Luno Electrical Website design",
+                  PrioritybackgroundColor: "#FF3E48",
+                  PriorityName: "high",
+                  Status: "TBA",
+                  ProgressBar: "50",
+                  date: "29-10-2022",
+                  labelRowImgData: [
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?girl",
+                    },
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?face",
+                    },
+                  ],
+                },
+                {
+                  RefID: "Ref012",
+                  tasksName: "Luno Electrical Website design",
+                  PrioritybackgroundColor: "#FF3E48",
+                  PriorityName: "high",
+                  Status: "TBA",
+                  ProgressBar: "50",
+                  date: "29-10-2022",
+                  labelRowImgData: [
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?girl",
+                    },
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?face",
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              tasksName: "Research",
+              tasksKey: "1",
+              TasksTabel: [
+                {
+                  RefID: "Ref012",
+                  tasksName: "Luno Electrical Website design",
+                  PrioritybackgroundColor: "#FF3E48",
+                  PriorityName: "high",
+                  Status: "TBA",
+                  ProgressBar: "50",
+                  date: "29-10-2022",
+                  labelRowImgData: [
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?girl",
+                    },
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?boy",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          departmentName: "Backend",
+          departmentKey: "1",
+          TasksCategory: [
+            {
+              tasksName: "Research",
+              tasksKey: "0",
+              TasksTabel: [
+                {
+                  RefID: "Ref012",
+                  tasksName: "Luno Electrical Website design",
+                  PrioritybackgroundColor: "#FF3E48",
+                  PriorityName: "high",
+                  Status: "TBA",
+                  ProgressBar: "50",
+                  date: "29-10-2022",
+                  labelRowImgData: [
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?girl",
+                    },
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?face",
+                    },
+                  ],
+                },
+                {
+                  RefID: "Ref012",
+                  tasksName: "Luno Electrical Website design",
+                  PrioritybackgroundColor: "#FF3E48",
+                  PriorityName: "high",
+                  Status: "TBA",
+                  ProgressBar: "50",
+                  date: "29-10-2022",
+                  labelRowImgData: [
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?girl",
+                    },
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?face",
+                    },
+                  ],
+                },
+                {
+                  RefID: "Ref012",
+                  tasksName: "Luno Electrical Website design",
+                  PrioritybackgroundColor: "#FF3E48",
+                  PriorityName: "high",
+                  Status: "TBA",
+                  ProgressBar: "50",
+                  date: "29-10-2022",
+                  labelRowImgData: [
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?girl",
+                    },
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?face",
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              tasksName: "Research",
+              tasksKey: "1",
+              TasksTabel: [
+                {
+                  RefID: "Ref012",
+                  tasksName: "Luno Electrical Website design",
+                  PrioritybackgroundColor: "#FF3E48",
+                  PriorityName: "high",
+                  Status: "TBA",
+                  ProgressBar: "50",
+                  date: "29-10-2022",
+                  labelRowImgData: [
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?girl",
+                    },
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?boy",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      projectName: "max hr",
+      projectKey: "1",
+      DepartmentCategory: [
+        {
+          departmentName: "react js Development",
+          departmentKey: "0",
+          TasksCategory: [
+            {
+              tasksName: "Research",
+              tasksKey: "0",
+              TasksTabel: [
+                {
+                  RefID: "Ref012",
+                  tasksName: "Luno Electrical Website design",
+                  PrioritybackgroundColor: "#FF3E48",
+                  PriorityName: "high",
+                  Status: "TBA",
+                  ProgressBar: "50",
+                  date: "29-10-2022",
+                  labelRowImgData: [
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?girl",
+                    },
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?face",
+                    },
+                  ],
+                },
+                {
+                  RefID: "Ref012",
+                  tasksName: "Luno Electrical Website design",
+                  PrioritybackgroundColor: "#FF3E48",
+                  PriorityName: "high",
+                  Status: "TBA",
+                  ProgressBar: "50",
+                  date: "29-10-2022",
+                  labelRowImgData: [
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?girl",
+                    },
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?face",
+                    },
+                  ],
+                },
+                {
+                  RefID: "Ref012",
+                  tasksName: "Luno Electrical Website design",
+                  PrioritybackgroundColor: "#FF3E48",
+                  PriorityName: "high",
+                  Status: "TBA",
+                  ProgressBar: "50",
+                  date: "29-10-2022",
+                  labelRowImgData: [
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?girl",
+                    },
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?face",
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              tasksName: "Research",
+              tasksKey: "1",
+              TasksTabel: [
+                {
+                  RefID: "Ref012",
+                  tasksName: "Luno Electrical Website design",
+                  PrioritybackgroundColor: "#FF3E48",
+                  PriorityName: "high",
+                  Status: "TBA",
+                  ProgressBar: "50",
+                  date: "29-10-2022",
+                  labelRowImgData: [
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?girl",
+                    },
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?boy",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          departmentName: "Backend",
+          departmentKey: "1",
+          TasksCategory: [
+            {
+              tasksName: "Research",
+              tasksKey: "0",
+              TasksTabel: [
+                {
+                  RefID: "Ref012",
+                  tasksName: "Luno Electrical Website design",
+                  PrioritybackgroundColor: "#FF3E48",
+                  PriorityName: "high",
+                  Status: "TBA",
+                  ProgressBar: "50",
+                  date: "29-10-2022",
+                  labelRowImgData: [
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?girl",
+                    },
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?face",
+                    },
+                  ],
+                },
+                {
+                  RefID: "Ref012",
+                  tasksName: "Luno Electrical Website design",
+                  PrioritybackgroundColor: "#FF3E48",
+                  PriorityName: "high",
+                  Status: "TBA",
+                  ProgressBar: "50",
+                  date: "29-10-2022",
+                  labelRowImgData: [
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?girl",
+                    },
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?face",
+                    },
+                  ],
+                },
+                {
+                  RefID: "Ref012",
+                  tasksName: "Luno Electrical Website design",
+                  PrioritybackgroundColor: "#FF3E48",
+                  PriorityName: "high",
+                  Status: "TBA",
+                  ProgressBar: "50",
+                  date: "29-10-2022",
+                  labelRowImgData: [
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?girl",
+                    },
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?face",
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              tasksName: "Research",
+              tasksKey: "1",
+              TasksTabel: [
+                {
+                  RefID: "Ref012",
+                  tasksName: "Luno Electrical Website design",
+                  PrioritybackgroundColor: "#FF3E48",
+                  PriorityName: "high",
+                  Status: "TBA",
+                  ProgressBar: "50",
+                  date: "29-10-2022",
+                  labelRowImgData: [
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?girl",
+                    },
+                    {
+                      img: "https://source.unsplash.com/random/500x500/?boy",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ];
+  const ClassicViewApp = (props) => {
+    const ProjectListDropDown = () => {
+      const [anchorEl, setAnchorEl] = React.useState(null);
+      const open = Boolean(anchorEl);
+      const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+      };
+      const handleClose = () => {
+        setAnchorEl(null);
+      };
+      const navigate = useNavigate();
+      const options = [
+        { link: "/manager/project_details", name: "View Project Details" },
+        { link: "/manager/assign_project", name: "Assign Project" },
+        { link: "/manager/create_task", name: "Create Task" },
+        { link: "/", name: "Chat" },
+        { link: "/", name: "View Notes" },
+      ];
+
+      const ITEM_HEIGHT = 30;
+      return (
+        <>
+          <div className="chat_option">
+            <IconButton
+              aria-label="more"
+              id="long-button"
+              aria-controls={open ? "long-menu" : undefined}
+              aria-expanded={open ? "true" : undefined}
+              aria-haspopup="true"
+              onClick={handleClick}
+              className=" m-0 p-0"
+            >
+              <BiDotsHorizontalRounded />
+            </IconButton>
+            <Menu
+              id="long-menu"
+              MenuListProps={{
+                "aria-labelledby": "long-button",
+              }}
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              PaperProps={{
+                style: {
+                  maxHeight: ITEM_HEIGHT * 4.5,
+                  width: "15ch",
+                },
+              }}
+            >
+              {options.map((option) => (
+                <div key={option.name} onClick={() => navigate(option.link)}>
+                  <MenuItem selected={option === "Pyxis"} onClick={handleClose}>
+                    <div className="chat_option_name_div">{option.name}</div>
+                  </MenuItem>
+                </div>
+              ))}
+            </Menu>
+          </div>
+        </>
+      );
+    };
+    const TaskLabel = ({ labelRowData }) => {
+      return (
+        <div>
+          <div className="dashbaord_white_card pt-3 px-2 ">
+            <div>
+              <table className="table table-hover text-capitalize progress_all_tabel_tabel">
+                <thead>
+                  <tr className="progress_all_tabel_tr">
+                    <th scope="col">
+                      <input className="form-check-input" type="checkbox" />
+                    </th>
+                    <th scope="col">RefID</th>
+                    <th scope="col">tasks Name</th>
+                    <th scope="col">Priority</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Progress</th>
+                    <th scope="col">Assignee</th>
+                    <th scope="col">Due Date</th>
+                    <th scope="col">action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {labelRowData.map((labelRowData, i) => {
+                    return (
+                      <tr key={i} className="progress_all_tabel_tr_mor">
+                        <td>
+                          <input className="form-check-input" type="checkbox" />
+                        </td>
+                        <td>{labelRowData.RefID}</td>
+                        <td className="project_list_name">
+                          {labelRowData.tasksName}
+                        </td>
+                        <td>
+                          <div
+                            className="project_list_priority_div"
+                            style={{
+                              backgroundColor:
+                                labelRowData.PrioritybackgroundColor,
+                            }}
+                          >
+                            <span className="project_list_priority">
+                              {labelRowData.PriorityName}
+                            </span>
+                          </div>
+                        </td>
+                        <td>
+                          <span
+                            style={{
+                              color: labelRowData.PrioritybackgroundColor,
+                            }}
+                          >
+                            {labelRowData.Status}
+                          </span>
+                        </td>
+                        <td className="progress_all_tabel_td">
+                          <div className="progress_all_tabel">
+                            <div className="row align-items-center">
+                              <div className="col-2">
+                                <span>{labelRowData.ProgressBar}%</span>
+                              </div>
+                              <div className="col-10">
+                                <div className="progress">
+                                  <div
+                                    className="progress-bar"
+                                    role="progressbar"
+                                    style={{
+                                      width: labelRowData.ProgressBar + "20%",
+                                    }}
+                                    aria-valuenow="0"
+                                    aria-valuemin="0"
+                                    aria-valuemax="100"
+                                  ></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div
+                            className="Participants_main_div_inner"
+                            style={{ marginTop: "-3px" }}
+                          >
+                            <AvatarGroup max={4}>
+                              {labelRowData.labelRowImgData.map((val, i) => {
+                                return (
+                                  <Avatar
+                                    key={i}
+                                    alt="logo"
+                                    src={val.img}
+                                    sx={{ width: 24, height: 24 }}
+                                  />
+                                );
+                              })}
+                            </AvatarGroup>
+                          </div>
+                        </td>
+                        <td>{labelRowData.date}</td>
+                        <td>
+                          <div className="progress_all_option_icon">
+                            <ProjectListDropDown />
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <div className="projec_tabelt_list_pagination_div">
+              <Stack spacing={2}>
+                <Pagination count={10} />
+              </Stack>
+            </div>
+          </div>
+        </div>
+      );
+    };
+    const TasksCategory = (TasksCategoryData) => {
+      return (
+        <Accordion.Item eventKey={TasksCategoryData.tasksKey}>
+          <Accordion.Header className="classic_view_tabel_heder">
+            <span>{TasksCategoryData.tasksName}</span>
+          </Accordion.Header>
+          <Accordion.Body className="classic_view_tabel_body">
+            <TaskLabel labelRowData={TasksCategoryData.TasksTabel} />
+          </Accordion.Body>
+        </Accordion.Item>
+      );
+    };
+    const DepartmentCategory = ({ DepartmentCategoryData }) => {
+      return (
+        <Accordion.Item eventKey={DepartmentCategoryData.departmentKey}>
+          <Accordion.Header className="classic_view_inner_header">
+            <span>{DepartmentCategoryData.departmentName}</span>
+          </Accordion.Header>
+          <Accordion.Body className="classic_view_inner_body">
+            <Accordion>
+              {DepartmentCategoryData.TasksCategory.map(
+                (DepartmentCategoryData, w) => {
+                  return <TasksCategory key={w} {...DepartmentCategoryData} />;
+                }
+              )}
+            </Accordion>
+          </Accordion.Body>
+        </Accordion.Item>
+      );
+    };
+
+    return (
+      <>
+        <Accordion.Item className=" mb-2" eventKey={props.projectKey}>
+          <Accordion.Header>{props.projectName}</Accordion.Header>
+          <Accordion.Body className="classic_view_outer_body pt-0">
+            <Accordion>
+              {props.DepartmentCategory.map((val, e) => {
+                return (
+                  <DepartmentCategory key={e} DepartmentCategoryData={val} />
+                );
+              })}
+            </Accordion>
+          </Accordion.Body>
+        </Accordion.Item>
+      </>
+    );
+  };
+  return (
+    <>
+      <div className="classic_view_outer">
+        <Accordion>
+          {ClassicViewData.map((val, i) => {
+            return <ClassicViewApp key={i} {...val} />;
+          })}
+        </Accordion>
+      </div>
+      <div className="projec_tabelt_list_pagination_div mt-4">
+        <Stack spacing={2}>
+          <Pagination count={10} />
+        </Stack>
+      </div>
+    </>
+  );
+};
+// Classic view end

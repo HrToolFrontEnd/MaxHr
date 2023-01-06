@@ -691,6 +691,9 @@
     color: black;
     background-color: #cdd4ff;
   }
+  .css-1pahdxg-control {
+    min-height: 42px;
+  }
 
   .nav-pills .nav-link {
     background: white;
@@ -715,6 +718,7 @@
           font-size: 20px;
           color: black;
           margin-right: 11px;
+          margin-bottom: 2px;
         }
       }
     }
@@ -2117,3 +2121,36 @@
   padding: 8px 5px 8px 5px !important;
 }
 // Tasks end
+// View All Tasks
+.view_all_tasks_btn {
+  .view_change_main_div {
+    position: unset;
+    .view_change_label {
+      span {
+        display: block !important;
+      }
+    }
+  }
+}
+.view_all_tasks_title_div {
+  display: flex;
+  align-items: baseline;
+  p {
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 24px;
+  }
+  a {
+    font-weight: 500;
+    font-size: 14px;
+    color: #1a7fdd;
+    text-decoration: underline !important;
+    margin-left: 10px;
+  }
+}
+.back_btn_mb {
+  .page_All_top_title {
+    margin-bottom: 10px;
+  }
+}
+// View All Tasks end

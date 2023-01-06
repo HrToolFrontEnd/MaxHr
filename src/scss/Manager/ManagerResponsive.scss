@@ -1,6 +1,19 @@
 @import "../--mixing.scss";
 @import "../--var.scss";
 @media (max-width: 576px) {
+  .view_all_tasks_title_div {
+    position: relative;
+    a {
+      position: absolute;
+      top: -31px;
+      right: 0;
+    }
+  }
+  .view_all_tasks_title_div {
+    p {
+      font-size: 15px;
+    }
+  }
   .classic_view_inner_body {
     padding: 0px 10px 10px 10px !important;
   }
@@ -393,6 +406,11 @@
   }
 }
 @media (min-width: 768px) {
+  .view_all_tasks_title_div {
+    p {
+      font-size: 13px;
+    }
+  }
   .view_change_main_div {
     .css-1s2u09g-control {
       min-height: 37px;
@@ -509,6 +527,11 @@
   }
 }
 @media (min-width: 1024px) {
+  .view_all_tasks_title_div {
+    p {
+      font-size: 24px;
+    }
+  }
   .view_change_main_div {
     .css-1s2u09g-control {
       min-height: 42px;

@@ -1,9 +1,3 @@
-import { Nav, Tab } from "react-bootstrap";
-import { OutlineBtnWithIcon } from "../../../../common/ManagerComponents/Btn/Btn";
-import { FaFilter } from "react-icons/fa";
-import { PageAllTopTitle } from "../../../../common/ManagerComponents/PageAllTopTitle";
-import { FullBtn } from "../../../../common/ManagerComponents/Btn/Btn";
-import { IoSearchOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
@@ -12,6 +6,7 @@ import Select from "react-select";
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import { VscListSelection } from "react-icons/vsc";
 import { useState } from "react";
+import { FullBtn } from "../../../../common/ManagerComponents/Btn/Btn";
 // mui
 import * as React from "react";
 import Avatar from "@mui/material/Avatar";
@@ -21,8 +16,10 @@ import Stack from "@mui/material/Stack";
 import { NavLink } from "react-router-dom";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-// tabs
-export const TasksList = () => {
+import { PageAllTopTitle } from "../../../../common/ManagerComponents/PageAllTopTitle";
+import { BsArrowLeft } from "react-icons/bs";
+// index
+export const ViewAllTasks = () => {
   const [viewType, setViewType] = useState("plain");
   const ViewChangeLabel = (props) => {
     return (
@@ -45,113 +42,53 @@ export const TasksList = () => {
   ];
   return (
     <>
-      <div>
-        <div className="row g-3 header_my">
-          <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-1 col-sm-12 col-12 order-md-1 order-2">
-            <PageAllTopTitle title="Tasks" />
-          </div>
-          <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-5 col-sm-12 col-12 order-md-2 order-1">
-            <div className="header_input_div">
-              <IoSearchOutline />
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Search by Project Name"
-              />
-            </div>
-          </div>
-          <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-3 col-sm-12 col-12 header_btn order-md-3 order-3">
-            <div>
-              <FullBtn link="/manager/create_task" name="Create New task" />
-            </div>
-          </div>
+      <div className="custom_container">
+        <div className="back_btn_mb">
+          <PageAllTopTitle link={-1} icon={<BsArrowLeft />} title="Back" />
         </div>
-        <div className="project_list_tabs_main_div">
-          <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-            <div className="project_list_tabs_inner_div">
-              <div className=" mb-4">
-                <Nav variant="pills" className="flex">
-                  <Nav.Item>
-                    <Nav.Link eventKey="first">All Tasks</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link eventKey="Completed">Completed</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link eventKey="OnTrack">On Track</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link eventKey="Delayed">Delayed</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link eventKey="OnHold">On Hold</Nav.Link>
-                  </Nav.Item>
-                </Nav>
-              </div>
-              <div className="view_change_main_div">
-                <Select
-                  options={ViewChange}
-                  defaultValue={ViewChange[0]}
-                  isSearchable={false}
-                  onChange={({ value }) => {
-                    setViewType(value);
-                  }}
-                />
-              </div>
-              <div className="project_list_tabs_inner_btn">
-                <OutlineBtnWithIcon name="All Filters" icon={<FaFilter />} />
+        <div className="row g-xxl-4 g-xl-4 g-lg-4 g-md-4 g-sm-3 g-3  align-items-center">
+          <div className="col-xxl-8 col-xl-8 col-lg-7 col-md-6 col-sm-12 col-12">
+            <div className="view_all_tasks_title_div">
+              <p>Luno Electrical Website & Marketing</p>
+              <NavLink to="/">Project Details</NavLink>
+            </div>
+          </div>
+          <div className="col-xxl-2 col-xl-2 col-lg-2 col-md-3 col-sm-6 col-6 text-end">
+            <div className="view_all_tasks_btn">
+              <div className="project_list_tabs_main_div">
+                <div className="view_change_main_div">
+                  <Select
+                    options={ViewChange}
+                    defaultValue={ViewChange[0]}
+                    isSearchable={false}
+                    onChange={({ value }) => {
+                      setViewType(value);
+                    }}
+                  />
+                </div>
               </div>
             </div>
+          </div>
+          <div className="col-xxl-2 col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6 text-end">
+            <div>
+              <FullBtn link="/manager/create_task" name="Create New Task" />
+            </div>
+          </div>
 
-            <Tab.Content>
-              <Tab.Pane eventKey="first">
-                {
-                  {
-                    classic: <ClassicView />,
-                    plain: <AllTasksList />,
-                  }[viewType]
-                }
-              </Tab.Pane>
-              <Tab.Pane eventKey="Completed">
-                {
-                  {
-                    classic: <ClassicView />,
-                    plain: <AllTasksList />,
-                  }[viewType]
-                }
-              </Tab.Pane>
-              <Tab.Pane eventKey="OnTrack">
-                {
-                  {
-                    classic: <ClassicView />,
-                    plain: <AllTasksList />,
-                  }[viewType]
-                }
-              </Tab.Pane>
-              <Tab.Pane eventKey="Delayed">
-                {
-                  {
-                    classic: <ClassicView />,
-                    plain: <AllTasksList />,
-                  }[viewType]
-                }
-              </Tab.Pane>
-              <Tab.Pane eventKey="OnHold">
-                {
-                  {
-                    classic: <ClassicView />,
-                    plain: <AllTasksList />,
-                  }[viewType]
-                }
-              </Tab.Pane>
-            </Tab.Content>
-          </Tab.Container>
+          <div className="col-12">
+            {
+              {
+                classic: <ClassicView />,
+                plain: <AllTasksList />,
+              }[viewType]
+            }
+          </div>
         </div>
       </div>
     </>
   );
 };
-// tabs end
+// index end
 // All Tasks list
 const AllTasksList = () => {
   const ProjectListData = [
@@ -162,7 +99,6 @@ const AllTasksList = () => {
       Status: "On Track",
       ProjectName: "Luno Electrical Website Design",
       date: "29-10-2022",
-      link: "/manager/view_all_tasks",
       cat1: [
         {
           img: "https://source.unsplash.com/random/500x500/?girl",
@@ -185,7 +121,6 @@ const AllTasksList = () => {
       Status: "On Track",
       ProjectName: "Luno Electrical Website Design",
       date: "29-10-2022",
-      link: "/manager/view_all_tasks",
       cat1: [
         {
           img: "https://source.unsplash.com/random/500x500/?girl",
@@ -208,7 +143,6 @@ const AllTasksList = () => {
       Status: "On Track",
       ProjectName: "Luno Electrical Website Design",
       date: "29-10-2022",
-      link: "/manager/view_all_tasks",
       cat1: [
         {
           img: "https://source.unsplash.com/random/500x500/?girl",
@@ -231,7 +165,28 @@ const AllTasksList = () => {
       Status: "On Track",
       ProjectName: "Luno Electrical Website Design",
       date: "29-10-2022",
-      link: "/manager/view_all_tasks",
+      cat1: [
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,new",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,two",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?women",
+        },
+      ],
+    },
+    {
+      TaskTitle: "Merchant Offers Discussion",
+      Priority: "High",
+      PrioritybackgroundColor: "#FF3E48",
+      Status: "On Track",
+      ProjectName: "Luno Electrical Website Design",
+      date: "29-10-2022",
       cat1: [
         {
           img: "https://source.unsplash.com/random/500x500/?girl",
@@ -337,9 +292,7 @@ const AllTasksList = () => {
             </div>
           </td>
           <td>
-            <div className="Participants_main_div_tr">
-              <NavLink to={props.link}>{props.ProjectName}</NavLink>
-            </div>
+            <div className="Participants_main_div_tr">{props.ProjectName}</div>
           </td>
           <td className="Participants_main_div">
             <div className="Participants_main_div_inner">

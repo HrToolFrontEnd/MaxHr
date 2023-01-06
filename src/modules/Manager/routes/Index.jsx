@@ -13,6 +13,7 @@ import { ProjectDetails } from "../components/pages/Dashboard/page/ProjectDetail
 import { AssignProject } from "../components/pages/Dashboard/page/AssignProject";
 import { CreateTask } from "../components/pages/Dashboard/page/CreateTask";
 import { Tasks } from "../page/Tasks";
+import { ViewAllTasks } from "../components/pages/Tasks/ViewAllTasks";
 
 const Index = () => {
   const [nav, setNav] = useState(true);
@@ -35,6 +36,7 @@ const Index = () => {
                 <Route path="/assign_project" element={<AssignProject />} />
                 <Route path="/create_task" element={<CreateTask />} />
                 <Route path="/tasks" element={<Tasks />} />
+                <Route path="/view_all_tasks" element={<ViewAllTasks />} />
 
                 <Route path="*" element={<main>NOT FOUND</main>} />
               </Routes>

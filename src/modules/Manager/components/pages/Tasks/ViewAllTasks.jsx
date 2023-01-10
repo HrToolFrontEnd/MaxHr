@@ -3,10 +3,13 @@ import IconButton from "@mui/material/IconButton";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import Accordion from "react-bootstrap/Accordion";
 import Select from "react-select";
-import { AiOutlineUnorderedList } from "react-icons/ai";
+import { AiOutlineUnorderedList, AiOutlinePlus } from "react-icons/ai";
 import { VscListSelection } from "react-icons/vsc";
 import { useState } from "react";
-import { FullBtn } from "../../../../common/ManagerComponents/Btn/Btn";
+import {
+  FullBtn,
+  FullBtnWithIcon,
+} from "../../../../common/ManagerComponents/Btn/Btn";
 // mui
 import * as React from "react";
 import Avatar from "@mui/material/Avatar";
@@ -18,6 +21,10 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { PageAllTopTitle } from "../../../../common/ManagerComponents/PageAllTopTitle";
 import { BsArrowLeft } from "react-icons/bs";
+import { BsKanban } from "react-icons/bs";
+import Box from "@mui/material/Box";
+import Drawer from "@mui/material/Drawer";
+// let DemoImg = "https://source.unsplash.com/random/500x500/?girl";
 // index
 export const ViewAllTasks = () => {
   const [viewType, setViewType] = useState("plain");
@@ -39,6 +46,10 @@ export const ViewAllTasks = () => {
       value: "classic",
       label: <ViewChangeLabel title="classic" icon={<VscListSelection />} />,
     },
+    {
+      value: "Kanban",
+      label: <ViewChangeLabel title="Kanban" icon={<BsKanban />} />,
+    },
   ];
   return (
     <>
@@ -50,7 +61,7 @@ export const ViewAllTasks = () => {
           <div className="col-xxl-8 col-xl-8 col-lg-7 col-md-6 col-sm-12 col-12">
             <div className="view_all_tasks_title_div">
               <p>Luno Electrical Website & Marketing</p>
-              <NavLink to="/">Project Details</NavLink>
+              <NavLink to="/manager/project_details">Project Details</NavLink>
             </div>
           </div>
           <div className="col-xxl-2 col-xl-2 col-lg-2 col-md-3 col-sm-6 col-6 text-end">
@@ -80,6 +91,7 @@ export const ViewAllTasks = () => {
               {
                 classic: <ClassicView />,
                 plain: <AllTasksList />,
+                Kanban: <Kanban />,
               }[viewType]
             }
           </div>
@@ -965,3 +977,518 @@ export const ClassicView = () => {
   );
 };
 // Classic view end
+// Kanban
+const Kanban = () => {
+  return (
+    <>
+      <div className="row g-xxl-4 g-xl-4 g-lg-4 g-md-4 g-sm-3 g-3 ">
+        <div className="col-xxl- col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
+          <OpenTasks />
+        </div>
+        <div className="col-xxl- col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
+          <OnTrack />
+        </div>
+        <div className="col-xxl- col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
+          <Delayed />
+        </div>
+        <div className="col-xxl- col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
+          <OnHold />
+        </div>
+      </div>
+    </>
+  );
+};
+const OpenTasks = () => {
+  const TasksData = [
+    {
+      TaskTitle: "Create Navigation Menu and Search Bar",
+      Priority: "High",
+      PrioritybackgroundColor: "#FF3E48",
+      AssigneeTotal: "6",
+      AssigneeData: [
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,new",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,two",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?women",
+        },
+      ],
+    },
+    {
+      TaskTitle: "Create Navigation Menu and Search Bar",
+      Priority: "Medium",
+      PrioritybackgroundColor: "#F3D32C",
+      AssigneeTotal: "6",
+      AssigneeData: [
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,new",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,two",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?women",
+        },
+      ],
+    },
+    {
+      TaskTitle: "Create Navigation Menu and Search Bar",
+      Priority: "low",
+      PrioritybackgroundColor: "#32C971",
+      AssigneeTotal: "6",
+      AssigneeData: [
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,new",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,two",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?women",
+        },
+      ],
+    },
+  ];
+  const TasksApp = (props) => {
+    const [state, setState] = React.useState(false);
+    return (
+      <>
+        <Drawer anchor="right" open={state} onClick={() => setState(false)}>
+          <Box role="presentation">Lorem ipsum dolor sit amet consectetur</Box>
+        </Drawer>
+        <div className="col-12">
+          <div className="open_tasks_card" onClick={() => setState(true)}>
+            <h3>{props.TaskTitle}</h3>
+            <div className="row">
+              <div className="col-12">
+                <div className="open_tasks_img_div">
+                  <AvatarGroup max={4}>
+                    {props.AssigneeData.map((val, i) => {
+                      return (
+                        <Avatar
+                          key={i}
+                          alt="icon"
+                          src={val.img}
+                          sx={{ width: 20, height: 20 }}
+                        />
+                      );
+                    })}
+                  </AvatarGroup>
+                  <p>{props.AssigneeTotal} Assignee</p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="project_list_priority_div"
+              style={{ backgroundColor: props.PrioritybackgroundColor }}
+            >
+              <span className="project_list_priority">{props.Priority}</span>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  };
+
+  return (
+    <>
+      <div className="inner_taska_div_main">
+        <div className="inner_taska_title_div_main">
+          <h3>Open Tasks</h3>
+          <div className="inner_taska_title_btn_div_main">
+            <FullBtnWithIcon
+              link="/manager/create_task"
+              name="Add Task"
+              icon={<AiOutlinePlus />}
+            />
+          </div>
+
+          <div className="row g-3 mt-2">
+            {TasksData.map((val, i) => {
+              return <TasksApp key={i} {...val} />;
+            })}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+const OnTrack = () => {
+  const TasksData = [
+    {
+      TaskTitle: "Create Navigation Menu and Search Bar",
+      Priority: "High",
+      PrioritybackgroundColor: "#FF3E48",
+      AssigneeTotal: "6",
+      AssigneeData: [
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,new",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,two",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?women",
+        },
+      ],
+    },
+    {
+      TaskTitle: "Create Navigation Menu and Search Bar",
+      Priority: "Medium",
+      PrioritybackgroundColor: "#F3D32C",
+      AssigneeTotal: "6",
+      AssigneeData: [
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,new",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,two",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?women",
+        },
+      ],
+    },
+    {
+      TaskTitle: "Create Navigation Menu and Search Bar",
+      Priority: "low",
+      PrioritybackgroundColor: "#32C971",
+      AssigneeTotal: "6",
+      AssigneeData: [
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,new",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,two",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?women",
+        },
+      ],
+    },
+  ];
+  const TasksApp = (props) => {
+    const [state, setState] = React.useState(false);
+    return (
+      <>
+        <Drawer anchor="right" open={state} onClick={() => setState(false)}>
+          <Box role="presentation">Lorem ipsum dolor sit amet consectetur</Box>
+        </Drawer>
+        <div className="col-12">
+          <div
+            className="open_tasks_card open_tasks_card2"
+            onClick={() => setState(true)}
+          >
+            <h3>{props.TaskTitle}</h3>
+            <div className="row">
+              <div className="col-12">
+                <div className="open_tasks_img_div">
+                  <AvatarGroup max={4}>
+                    {props.AssigneeData.map((val, i) => {
+                      return (
+                        <Avatar
+                          key={i}
+                          alt="icon"
+                          src={val.img}
+                          sx={{ width: 20, height: 20 }}
+                        />
+                      );
+                    })}
+                  </AvatarGroup>
+                  <p>{props.AssigneeTotal} Assignee</p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="project_list_priority_div"
+              style={{ backgroundColor: props.PrioritybackgroundColor }}
+            >
+              <span className="project_list_priority">{props.Priority}</span>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  };
+
+  return (
+    <>
+      <div className="inner_taska_div_main">
+        <div className="inner_taska_title_div_main">
+          <h3>On Tasks</h3>
+
+          <div className="row g-3 mt-2">
+            {TasksData.map((val, i) => {
+              return <TasksApp key={i} {...val} />;
+            })}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+const Delayed = () => {
+  const TasksData = [
+    {
+      TaskTitle: "Create Navigation Menu and Search Bar",
+      Priority: "High",
+      PrioritybackgroundColor: "#FF3E48",
+      AssigneeTotal: "6",
+      AssigneeData: [
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,new",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,two",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?women",
+        },
+      ],
+    },
+    {
+      TaskTitle: "Create Navigation Menu and Search Bar",
+      Priority: "Medium",
+      PrioritybackgroundColor: "#F3D32C",
+      AssigneeTotal: "6",
+      AssigneeData: [
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,new",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,two",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?women",
+        },
+      ],
+    },
+    {
+      TaskTitle: "Create Navigation Menu and Search Bar",
+      Priority: "low",
+      PrioritybackgroundColor: "#32C971",
+      AssigneeTotal: "6",
+      AssigneeData: [
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,new",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,two",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?women",
+        },
+      ],
+    },
+  ];
+  const TasksApp = (props) => {
+    const [state, setState] = React.useState(false);
+    return (
+      <>
+        <Drawer anchor="right" open={state} onClick={() => setState(false)}>
+          <Box role="presentation">Lorem ipsum dolor sit amet consectetur</Box>
+        </Drawer>
+        <div className="col-12">
+          <div
+            className="open_tasks_card open_tasks_card2"
+            onClick={() => setState(true)}
+          >
+            <h3>{props.TaskTitle}</h3>
+            <div className="row">
+              <div className="col-12">
+                <div className="open_tasks_img_div">
+                  <AvatarGroup max={4}>
+                    {props.AssigneeData.map((val, i) => {
+                      return (
+                        <Avatar
+                          key={i}
+                          alt="icon"
+                          src={val.img}
+                          sx={{ width: 20, height: 20 }}
+                        />
+                      );
+                    })}
+                  </AvatarGroup>
+                  <p>{props.AssigneeTotal} Assignee</p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="project_list_priority_div"
+              style={{ backgroundColor: props.PrioritybackgroundColor }}
+            >
+              <span className="project_list_priority">{props.Priority}</span>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  };
+
+  return (
+    <>
+      <div className="inner_taska_div_main">
+        <div className="inner_taska_title_div_main">
+          <h3>Delayed</h3>
+
+          <div className="row g-3 mt-2">
+            {TasksData.map((val, i) => {
+              return <TasksApp key={i} {...val} />;
+            })}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+const OnHold = () => {
+  const TasksData = [
+    {
+      TaskTitle: "Create Navigation Menu and Search Bar",
+      Priority: "High",
+      PrioritybackgroundColor: "#FF3E48",
+      AssigneeTotal: "6",
+      AssigneeData: [
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,new",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,two",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?women",
+        },
+      ],
+    },
+    {
+      TaskTitle: "Create Navigation Menu and Search Bar",
+      Priority: "Medium",
+      PrioritybackgroundColor: "#F3D32C",
+      AssigneeTotal: "6",
+      AssigneeData: [
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,new",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,two",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?women",
+        },
+      ],
+    },
+    {
+      TaskTitle: "Create Navigation Menu and Search Bar",
+      Priority: "low",
+      PrioritybackgroundColor: "#32C971",
+      AssigneeTotal: "6",
+      AssigneeData: [
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,new",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?girl,two",
+        },
+        {
+          img: "https://source.unsplash.com/random/500x500/?women",
+        },
+      ],
+    },
+  ];
+  const TasksApp = (props) => {
+    const [state, setState] = React.useState(false);
+    return (
+      <>
+        <Drawer anchor="right" open={state} onClick={() => setState(false)}>
+          <Box role="presentation">Lorem ipsum dolor sit amet consectetur</Box>
+        </Drawer>
+        <div className="col-12">
+          <div className="open_tasks_card " onClick={() => setState(true)}>
+            <h3>{props.TaskTitle}</h3>
+            <div className="row">
+              <div className="col-12">
+                <div className="open_tasks_img_div">
+                  <AvatarGroup max={4}>
+                    {props.AssigneeData.map((val, i) => {
+                      return (
+                        <Avatar
+                          key={i}
+                          alt="icon"
+                          src={val.img}
+                          sx={{ width: 20, height: 20 }}
+                        />
+                      );
+                    })}
+                  </AvatarGroup>
+                  <p>{props.AssigneeTotal} Assignee</p>
+                </div>
+              </div>
+            </div>
+            <div
+              className="project_list_priority_div"
+              style={{ backgroundColor: props.PrioritybackgroundColor }}
+            >
+              <span className="project_list_priority">{props.Priority}</span>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  };
+
+  return (
+    <>
+      <div className="inner_taska_div_main">
+        <div className="inner_taska_title_div_main">
+          <h3>On Hold</h3>
+
+          <div className="row g-3 mt-2">
+            {TasksData.map((val, i) => {
+              return <TasksApp key={i} {...val} />;
+            })}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+// Kanban enc
